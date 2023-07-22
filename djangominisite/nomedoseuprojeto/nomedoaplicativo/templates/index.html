@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Página de Apresentação</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h1>Página com Django</h1>
+        <ul>
+            {% for color in colors %}
+                <li>{{ color }}</li>
+            {% endfor %}
+            <a href="/input">Formulário de Soma</a>
+        </ul>
+    </body>
+</html>

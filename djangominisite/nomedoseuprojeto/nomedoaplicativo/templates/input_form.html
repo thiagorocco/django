@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meu Formulário</title>
+</head>
+<body>
+    <a href="/">Voltar</a>
+    <form method="post">
+        {% csrf_token %}
+        <label for="num1">Número 1:</label>
+        <input type="number" name="num1" id="num1">
+        <br>
+        <label for="num2">Número 2:</label>
+        <input type="number" name="num2" id="num2">
+        <br>
+        <input type="submit" value="Somar">
+    </form>
+
+    {% if result %}
+        <p>Resultado da soma: {{ result }}</p>
+    {% endif %}
+</body>
+</html>
