@@ -16,4 +16,7 @@
 
 # 6. Configure o git ignore e salve no seu projeto
 
+--> DICA: Cuidado com as bases de dados que você sobe para o github, pois muitas vezes
+serão públicas, a não ser que você configure o repositório como privado
+
 # 7. Faça um novo commit
