@@ -14,4 +14,6 @@
 # 5. Verifique se o django foi instalado corretamente:
     django-admin --version
 
-# 6. Configurando
+# 6. Configure o git ignore e salve no seu projeto
+
+# 7. Faça um novo commit
