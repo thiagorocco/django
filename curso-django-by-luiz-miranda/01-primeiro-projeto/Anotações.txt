@@ -14,4 +14,4 @@
 # 5. Verifique se o django foi instalado corretamente:
     django-admin --version
 
-# 6. 
+# 6. Configurando
