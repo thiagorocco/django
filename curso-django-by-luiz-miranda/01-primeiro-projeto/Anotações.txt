@@ -1,0 +1,17 @@
+# 1. Crie um ambiente virtual:
+    python3 -m venv venv
+
+# 2. Ative o ambiente virtual:
+    . venv/bin/activate ou source venv/bin/activate
+
+# 3. Instale o django:
+    pip install django
+
+# 4. Para atualizar todas as ferramentas:
+
+    python -m pip install pip setuptools wheel --upgrade
+
+# 5. Verifique se o django foi instalado corretamente:
+    django-admin --version
+
+# 6. 
