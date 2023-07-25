@@ -27,5 +27,7 @@ serão públicas, a não ser que você configure o repositório como privado
     com o manage.py dentro dela e também outra pasta dentro dela chamada projeto com os 
     arquivos de configuração.
 
+    Você pode digitar também django-admin --help para ver todas as opções
+
 # 9. Rode o servidor:
     Agora digite no terminal python3 manage.py runserver
