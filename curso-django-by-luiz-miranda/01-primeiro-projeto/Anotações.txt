@@ -20,3 +20,12 @@
 serão públicas, a não ser que você configure o repositório como privado
 
 # 7. Faça um novo commit
+
+# 8. Para fazer o primeiro hello world
+    django-admin startproject nome-projeto . O ponto no final serve para criar o manage.py dentro do 
+    diretório atual e a pasta projeto. Caso contrário o django criaria uma pasta projeto
+    com o manage.py dentro dela e também outra pasta dentro dela chamada projeto com os 
+    arquivos de configuração.
+
+# 9. Rode o servidor:
+    Agora digite no terminal python3 manage.py runserver
