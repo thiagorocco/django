@@ -1,0 +1,9 @@
+# 1. O arquivo urls.py
+    Contém informações dos caminhos da url digitada no navegador
+    Dentro dele há uma estrutura chamada urlpatterns e seus elementos path(caminhos)
+    Os paths sempre terão obrigatoriamente um caminho e uma função com request como parâmetro
+
+    def myview(request):
+        return HttpResponse('Olá, mundo')
+
+    path('/sobre',myview)

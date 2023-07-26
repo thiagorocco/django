@@ -5,3 +5,6 @@
 
     CTRL + J ou CTRL + ' funciona como atalho para abrir o terminal
 
+    Agora ao executar o comando F5 ou CTRl+F5 não é necessário digitar a linha de comando
+    python3 manage.py runserver
+
