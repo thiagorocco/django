@@ -8,3 +8,6 @@ Os apps servem para criar as views e templates para a sua aplicação
 # 2. Observe no menu à esquerda que o diretório "recipes" foi criado.
 
 # 3. Mova as views criados no arquivo urls.py para o arquivo views.py no diretório recipes
+    CTRL + C ... CTRL + V
+
+# 4.  
