@@ -1,0 +1,10 @@
+Criando, conhecendo e entendendo apps no django
+
+Os apps servem para criar as views e templates para a sua aplicação 
+
+# 1. Para criar um novo app
+    Acesse o terminal e digite o comando: python manage.py startapp nome_do_app(Usaremos "recipes" para o exemplo)
+
+# 2. Observe no menu à esquerda que o diretório "recipes" foi criado.
+
+# 3. Mova as views criados no arquivo urls.py para o arquivo views.py no diretório recipes
