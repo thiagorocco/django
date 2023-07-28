@@ -11,4 +11,10 @@ separado numa pasta chamada "templates"
     No nosso exemplo usaremos return render(request,'home.html')
 
 # 3. Agora dentro da pasta do aplicativo crie um diretório chamado "template"
-e dentro dele crie um arquivo chamado "home.html"
+e dentro dele crie um arquivo chamado "home.html" com algum conteúdo
+
+# 4. Para que o django entenda que o app recipes existe e que possui um template
+abra o arquivo settings.py na pasta projeto e em "INSTALLED_APPS" acrescente a
+linha 
+    'recipes', (Não esqueça da vírgula, faz toda a diferença!)
+Agora o django enxergará o seu template e renderizará o conteúdo html
