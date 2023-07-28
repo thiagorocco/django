@@ -1,0 +1,14 @@
+Dentro de views é possível usar código html para as páginas, mas
+é totalmente inviável. Por isso temos que criar nosso código html
+separado numa pasta chamada "templates"
+
+# 1. Observe que na view já existe a importação da função render:
+    from django.shortcuts import render
+    Essa função permite usar arquivos html da pasta templates
+
+# 2. Na view, altere a função "home" para retornar render em vez de HttpResponse
+    return render(request,'caminho_do_template')
+    No nosso exemplo usaremos return render(request,'home.html')
+
+# 3. Agora dentro da pasta do aplicativo crie um diretório chamado "template"
+e dentro dele crie um arquivo chamado "home.html"
