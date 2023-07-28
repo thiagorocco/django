@@ -18,3 +18,28 @@ abra o arquivo settings.py na pasta projeto e em "INSTALLED_APPS" acrescente a
 linha 
     'recipes', (Não esqueça da vírgula, faz toda a diferença!)
 Agora o django enxergará o seu template e renderizará o conteúdo html
+
+# 5. O ideal é usar namespaces para garantir o funcionamento dos seus templates
+Mas por quê? Porque dentro do arquivo SETTINGS.py existe a estrutura "TEMPLATES"
+e nela é possível alterar o local padrão dos templates em "DIR".
+
+Dessa forma suponhamos que você tenha uma pasta chamada base_templates/home.html e
+em DIR do arquivo settings.py e acrescente: 
+    BASE_DIR / 'base_templates',
+Agora por padrão sua view lerá o html que está dentro de base_templates
+* Isso é chamado de colisão de nomes, o django vai escolher entre os 
+arquivos de mesmo nome, o que estiver configurado em DIRS
+
+
+E como apontar para a pasta templates? Usando namespaces
+
+# 6. Usando namespaces
+    Dentro da pasta recipes/templates, crie uma pasta chamada recipes e, dentro
+    dela insira o arquivo home.html que estava em recipes/templates.
+    
+    * namespaces criado!
+
+# 7. Em views altere o segundo parâmetro da função home para:
+    'recipes/home.html'
+    * Agora o django vai pegar o home.html que está em templates/recipes.
+    Dessa forma não há problemas com colisão de nomes

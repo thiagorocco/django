@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 # Create your views here.
 def home(request):
-    return render(request,'home.html')
+    return render(request,'recipes/home.html')
 
 def contato(request):
     return HttpResponse('<h1>CONTATO</h1>')
