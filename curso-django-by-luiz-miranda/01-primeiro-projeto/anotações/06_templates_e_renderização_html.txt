@@ -43,3 +43,13 @@ E como apontar para a pasta templates? Usando namespaces
     'recipes/home.html'
     * Agora o django vai pegar o home.html que está em templates/recipes.
     Dessa forma não há problemas com colisão de nomes
+
+# 8. Vamos dar uma olhada na função render, pressione CTRL e clique sobre ela.
+    Veja que a função faz parte do arquivo shortcuts.py e faz praticamente o 
+    mesmo que estávamos fazendo antes retornando um HttpResponse e o conteúdo
+    do nosso template carregado em string.
+
+    É possível retornar o código do status
+
+# 9. Retornando variáveis no arquivo html
+    em views, ao criar uma variável ...
