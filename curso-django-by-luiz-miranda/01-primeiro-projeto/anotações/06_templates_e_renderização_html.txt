@@ -49,7 +49,4 @@ E como apontar para a pasta templates? Usando namespaces
     mesmo que estávamos fazendo antes retornando um HttpResponse e o conteúdo
     do nosso template carregado em string.
 
-    É possível retornar o código do status
-
-# 9. Retornando variáveis no arquivo html
-    em views, ao criar uma variável ...
+    É possível retornar o código do status(404,200,etc...)
