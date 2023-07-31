@@ -1,3 +1,13 @@
 # 1. Remova os arquivos contato e sobre dos templates, pois não serão usados.
 
-# 2. Elimine as rotas deles em urls e também as funções em views
+# 2. Elimine as rotas deles em recipes/urls.py e também as funções em recipes/views.py
+
+# 3. Adicione o cdn do font-awesome.min.css 5.15.4 à sua página home ligeiramente após
+a tag meta name. Nesse caso copie e cole ali.
+
+# 4. Faça o mesmo com o cdn brands.min.css e cole na linha seguinte.
+Por fim faça também com solid.min.css
+
+Importar esses códigos permitirá que você use ícones em seu site
+
+# 5.  
