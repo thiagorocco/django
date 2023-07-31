@@ -19,3 +19,5 @@ Em pages insira o código de home a partir da tag body e em partials o que estiv
 
 # 7. Agora em home.html, na primeira linha antes de iniciar o body insira a instrução django:
 {% include 'recipes/partials/head.html' %}
+
+# 8. Estilize o css do seu cabeçalho no arquivo head.html
