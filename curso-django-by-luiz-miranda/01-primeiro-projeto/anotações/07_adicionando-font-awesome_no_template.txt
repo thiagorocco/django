@@ -23,3 +23,7 @@ Em pages insira o código de home a partir da tag body e em partials o que estiv
 # 8. Estilize o css do seu cabeçalho no arquivo head.html
 
 # 9. Insira as variáveis do css conforme commit do curso em root:
+
+# 10. Adicione a fonte do Google Robot Slab no seu arquivo html e configure
+para que os cabeçalhos de h1 a h6 tenham a font-family o valor da variável font-headings
+
