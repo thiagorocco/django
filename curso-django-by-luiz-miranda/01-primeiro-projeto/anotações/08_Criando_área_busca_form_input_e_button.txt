@@ -1,0 +1,9 @@
+# 1. Mude a cor de fundo do body para --color-gray-1
+
+# 2. No arquivo home.html recorte a tag header e insira em um novo arquivo
+chamado header.html que ficará dentro do diretório partials.
+
+# 3. Em home.html dentro da tag body, insira um include para chamar o header:
+        {% include 'recipes/partials/header.html' %}
+
+# 4. 
