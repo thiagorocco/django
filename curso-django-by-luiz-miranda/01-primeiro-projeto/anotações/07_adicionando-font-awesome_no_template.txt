@@ -21,3 +21,5 @@ Em pages insira o código de home a partir da tag body e em partials o que estiv
 {% include 'recipes/partials/head.html' %}
 
 # 8. Estilize o css do seu cabeçalho no arquivo head.html
+
+# 9. Insira as variáveis do css conforme commit do curso em root:
