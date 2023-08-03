@@ -1,0 +1,8 @@
+# 1. Em home.html acrescente a div com classe = "recipe-list-item" mais uma classe recipe,
+ficando o nome completo da classe = ""recipe recipe-list-item". 
+E dentro dela acrescente a div com classe = "recipe-cover", e dentro dessa
+acrescente a tag img. Dentro da div com classe="recipe recipe-list-item" 
+insira um h1 escrito Oi dentro apenas para teste.
+
+# 2. Em head.html faça as formatações das classes:
+    .recipe, . recipe-list-item e .recipe-list-item:hover
