@@ -14,11 +14,17 @@ dentro da div "recipe recipe-list-item"
 Adicione as devidas formtações no css em head.html.
 
 # 5. Logo abaixo da div classe="recipe-content" adicione as divs:
-    "recipe-meta-container", recipe-meta recipe-servings" e o footer.
+    "recipe-meta-container", recipe-meta recipe-servings" e o recipe-footer.
     Essas divs se referem a informações do preparo, porções e o link "ver mais"
 
 # 6. Formate essas novas divs no css
 
+# 7. Separe o conteúdo da receita(recipe) em um arquivo separado que
+deverá ficar dentro da pasta "partials". Crie um footer para a sua página 
+em um arquivo separado também dentro de partials.
 
+# 8. Agora na home da sua página inclua recipe e o novo footer com a instrução include do django
+
+# 9. Formate o novo footer
 
 
