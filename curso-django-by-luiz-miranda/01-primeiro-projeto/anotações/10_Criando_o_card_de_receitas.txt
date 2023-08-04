@@ -17,6 +17,8 @@ Adicione as devidas formtações no css em head.html.
     "recipe-meta-container", recipe-meta recipe-servings" e o footer.
     Essas divs se referem a informações do preparo, porções e o link "ver mais"
 
-# 6. 
+# 6. Formate essas novas divs no css
+
+
 
 
