@@ -13,5 +13,10 @@ insira um h1 escrito Oi dentro apenas para teste.
 dentro da div "recipe recipe-list-item"
 Adicione as devidas formtações no css em head.html.
 
+# 5. Logo abaixo da div classe="recipe-content" adicione as divs:
+    "recipe-meta-container", recipe-meta recipe-servings" e o footer.
+    Essas divs se referem a informações do preparo, porções e o link "ver mais"
+
+# 6. 
 
 
