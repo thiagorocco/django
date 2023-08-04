@@ -6,3 +6,10 @@ insira um h1 escrito Oi dentro apenas para teste.
 
 # 2. Em head.html faça as formatações das classes:
     .recipe, . recipe-list-item e .recipe-list-item:hover
+
+# 3. Apague o h1 de teste.
+
+# 4. Adicione as divs recipe-title-container, recipe-author, recipe-author-item e recipe-content
+dentro da div "recipe recipe-list-item"
+Adicione as devidas formtações no css em head.html. 
+
