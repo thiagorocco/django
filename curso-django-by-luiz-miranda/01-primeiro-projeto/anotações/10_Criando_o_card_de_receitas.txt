@@ -11,5 +11,7 @@ insira um h1 escrito Oi dentro apenas para teste.
 
 # 4. Adicione as divs recipe-title-container, recipe-author, recipe-author-item e recipe-content
 dentro da div "recipe recipe-list-item"
-Adicione as devidas formtações no css em head.html. 
+Adicione as devidas formtações no css em head.html.
+
+
 
