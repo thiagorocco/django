@@ -19,4 +19,5 @@ novos caminhos.
     2. Em settings.py vá até a linha que contenha a STATIC_URL e logo abaixo 
     acrescente "STATICFILES_DIRS = [BASE_DIR / 'base_static']
     3. No head.html adicione essa folha de estilo
+    4. Acrescente uma formatação red ao backgroundo do body para testar.
 
