@@ -11,5 +11,10 @@ assim seguiremos a boa prática de namespace
 
 # 3. Agora em head.html faça a inclusão dessa folha de estilo com os comandos django:
     {% load static %} -> Insira antes da tag <!doctype html>
-    
+
+# 4. Em settings.py você pode acrescenter novos caminhos para arquivos estáticos.
+Por padrão eles devem ficar dentro da pasta static, mas é possível adicionar 
+novos caminhos.
+    1. Crie uma pasta chamada base_static/css/styles.css na raiz do projeto
+    2. Em settings.py vá até 
 
