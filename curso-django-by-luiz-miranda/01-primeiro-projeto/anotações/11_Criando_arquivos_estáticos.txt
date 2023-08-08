@@ -15,6 +15,8 @@ assim seguiremos a boa prática de namespace
 # 4. Em settings.py você pode acrescenter novos caminhos para arquivos estáticos.
 Por padrão eles devem ficar dentro da pasta static, mas é possível adicionar 
 novos caminhos.
-    1. Crie uma pasta chamada base_static/css/styles.css na raiz do projeto
-    2. Em settings.py vá até 
+    1. Crie uma pasta chamada base_static/global/css/global-style.css na raiz do projeto
+    2. Em settings.py vá até a linha que contenha a STATIC_URL e logo abaixo 
+    acrescente "STATICFILES_DIRS = [BASE_DIR / 'base_static']
+    3. No head.html adicione essa folha de estilo
 
