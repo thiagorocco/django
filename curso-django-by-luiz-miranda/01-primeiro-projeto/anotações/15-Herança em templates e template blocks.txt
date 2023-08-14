@@ -18,3 +18,5 @@ a base.html. Porém na página "filha" também deve conter a instrução
 {% block content %}
     /*Conteúdo*/
 {% endblock content %}
+
+3. Faça o processo também na página recipe-view
