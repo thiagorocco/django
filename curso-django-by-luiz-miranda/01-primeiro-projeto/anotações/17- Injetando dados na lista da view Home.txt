@@ -12,3 +12,8 @@ dinâmica.
     Altere o content das funções home e recipe passando informações
     da função make_recipe
 
+# 4. Em recipes/partials/recipe.html substitua as informações estáticas de
+title, autor, horário da postagem, nome da receita, descrição da receita e unidade
+pelos dados dinâmicos gerados pela factory.py, importados pela view e que deverão ser declarados
+através do método recipe da view
+
