@@ -1,0 +1,14 @@
+Faremos a inclusão dos dados usando a programação com django
+
+# 1. Primeiro vamos criar um arquivo .py chamado factory.py no diretório
+utils/recipes.
+    Usaremos a biblioteca faker, portanto instale-a com o pip.
+
+# 2. Em recipes/page/home.html retire as instruções de include e 
+acrescente a instrução for do django para inserir os cards de forma
+dinâmica.
+
+# 3. Em view.py importe a função make_recipe do código factory.py.
+    Altere o content das funções home e recipe passando informações
+    da função make_recipe
+
