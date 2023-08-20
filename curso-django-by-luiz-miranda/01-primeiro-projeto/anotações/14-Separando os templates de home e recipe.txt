@@ -2,4 +2,4 @@
 
 # 2. Copie e cole o código da home.html
 
-# 3. Altere o nome o caminho na view recipe 
+# 3. Altere o nome o caminho na view recipe
