@@ -1,0 +1,20 @@
+1. Crie uma pasta para o novo projeto django com o ambiente virtual.
+2. pip install django. Dica: limpe o terminal com CTRL+L em vez de clear.
+3. pip freeze > requirements.txt.
+4. django-admin startproject core ..
+5. Rode o projeto: python manage.py runserver
+
+Comentários sobre os arquivos gerados:
+    Settings.py é o coração do django onde há a configuração de secret-key, hosts, installed_apps e root-url-conf.
+6. Crie o app burguer: django-admin startapp burguer.
+7. Dentro da pasta do app crie um arquivo chamado urls.py. Pegue o conteúdo de core/urls.py e copie e cole para ele.
+8. Em burguer/urls.py configure o urlpatterns dessa forma por ora: path('', views.home, name='home'),
+9. Agora crie essa view que você indicou em urls dentro do arquivo views.py:
+    def home(request):
+    return HttpResponse('Hello, World!!!')
+Isso ainda não é suficiente para o app funcionar. No arquivo core/urls.py, que é o arquivo global de urls, precisa ter
+uma rota configurada para o novo arquivo urls.py dentro de burguer.
+10. Em core/urls.py em urlpatterns insira a seguinte instrução:
+        path('', include('burguer.urls'))
+11. Por fim para o app funcionar vá até core/settings.py e na última linha de INSTALLED_APPS insira a seguinte instrução:
+    'burguer',
