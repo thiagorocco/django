@@ -1,3 +1,5 @@
+*** O MÍNIMO PARA INICIAR UM PROJETO DJANGO ***
+
 1. Crie uma pasta para o novo projeto django com o ambiente virtual.
 2. pip install django. Dica: limpe o terminal com CTRL+L em vez de clear.
 3. pip freeze > requirements.txt.
@@ -18,3 +20,6 @@ uma rota configurada para o novo arquivo urls.py dentro de burguer.
         path('', include('burguer.urls'))
 11. Por fim para o app funcionar vá até core/settings.py e na última linha de INSTALLED_APPS insira a seguinte instrução:
     'burguer',
+
+*** INCLUSÃO DE TEMPLATES HTML COM BOOTSTRAP ***
+
