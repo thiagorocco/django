@@ -5,3 +5,5 @@ from django.http import HttpResponse
 def home(request):
     #return HttpResponse('Hello, World!!!')
     return render(request, 'burguer/home.html')
+def produto(request):
+    return render(request,'burguer/produto.html')

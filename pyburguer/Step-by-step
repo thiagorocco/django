@@ -28,5 +28,12 @@ Ficará assim: burguer/templates/burguer
 2. Crie também o arquivo produto.html e insira o mesmo código nele. Será assim por enquanto, só mude o h1 para "Detalhes do produto".
 3. Crie um novo arquivo chamado base.html, copie o código de home.html e cole nele. Esse arquivo será usado para reaproveitar o código usandos as tags do django.
 4. Dentro de base.html apague o conteúdo dentro de title e insira a tag django {% block titulo %} {% endblock %}. Faça isso também em body {% block content %} {% endblock %}
-5. 
+5. Em home.html apague todo o conteúdo html e insira as tags django {% extends 'burguer/base.html' %} e 
+{% block titulo %} Pyburguer {% endblock %}
 
+{% block content %}
+    <h1> Página inicial. Injeção de conteúdo!!! </h1>
+{% endblock %}
+
+6. Atualize o arquivo view.py no método home para retornar render(request,'burguer/home.html')
+7. Faça o mesmo com o arquivo produto.html. Em burguer/view crie uma nova função com nome produto e em burguer.urls acrescente um novo path da view
