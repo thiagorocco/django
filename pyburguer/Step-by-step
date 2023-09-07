@@ -22,4 +22,8 @@ uma rota configurada para o novo arquivo urls.py dentro de burguer.
     'burguer',
 
 *** INCLUSÃO DE TEMPLATES HTML COM BOOTSTRAP ***
+Dentro da pasta do app burguer, crie uma nova pasta chamada templates e dentro dela uma pasta chamada burguer. 
+Ficará assim: burguer/templates/burguer
+1. Crie uma página home.html com a inserção da folha e estilo e script bootstrap
+
 
