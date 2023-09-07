@@ -26,6 +26,7 @@ Dentro da pasta do app burguer, crie uma nova pasta chamada templates e dentro d
 Ficará assim: burguer/templates/burguer
 1. Crie uma página home.html com a inserção da folha e estilo e script bootstrap.
 2. Crie também o arquivo produto.html e insira o mesmo código nele. Será assim por enquanto, só mude o h1 para "Detalhes do produto".
-3. Crie um novo arquivo chamado base.html, copie o código de home.html e cole nele. Esse arquivo será usado para reaproveitar o código usandos as tags do djano.
-4. 
+3. Crie um novo arquivo chamado base.html, copie o código de home.html e cole nele. Esse arquivo será usado para reaproveitar o código usandos as tags do django.
+4. Dentro de base.html apague o conteúdo dentro de title e insira a tag django {% block titulo %} {% endblock %}. Faça isso também em body {% block content %} {% endblock %}
+5. 
 
