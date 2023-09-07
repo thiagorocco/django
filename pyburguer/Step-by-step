@@ -1,3 +1,9 @@
+*** Para eliminar processo do django no linux *** 
+sudo lsof -i :8000
+sudo kill -9 <PID>
+
+
+
 *** O MÍNIMO PARA INICIAR UM PROJETO DJANGO ***
 
 1. Crie uma pasta para o novo projeto django com o ambiente virtual.
@@ -37,3 +43,27 @@ Ficará assim: burguer/templates/burguer
 
 6. Atualize o arquivo view.py no método home para retornar render(request,'burguer/home.html')
 7. Faça o mesmo com o arquivo produto.html. Em burguer/view crie uma nova função com nome produto e em burguer.urls acrescente um novo path da view
+
+*** CRIAÇÃO DE MODELS ***
+Um model, segundo a documentação do django, é a fonte única e definitiva de informações sobre os dados que armazenamos
+1. Em burguer/models.py crie uma classe chamada Produto e herde a classe models.Model
+class Produto(models.Model):
+    descricao = models.TextField(null=False, blank=False)
+    preco = models.FloatField(null=False, blank=False)
+
+    def __str__(self):
+        return self.descricao
+2. Após a criação da classe Model, execute o comando no terminal: python manage.py makemigrations
+Esse comando prepara o modelo de dados para a posterior criação da tabela no banco de dados.
+O banco de dados padrão é o sqlite. Você pode conferir a configuração em core(pasta do projeto)/settings em DATABASES
+3 . Execute o comando python manage.py migrate
+Isso fará a criação efetiva das tabelas no banco de dados. Mas quais tabelas? São tabelas referente aos INSTALLED_APPS definidos em settings.py, incluindo
+o app 'burguer'
+4 . Agora crie um super usuário para acessar o banco de dados
+    python manage.py creatsuperuser
+        Define um nome, você pode ignorar o endereço de e-mail e precisa cadastrar uma senha.
+5. Rodando o servidor vá em localhost:8000/admin, digite usuario e senha e veja o painel administrativo do django.
+6. Vamos criar o acesso para manipular a model Produto.
+    Vá em burguer/admin.py e inclua a seguinte linha: admin.site.register(Produto), faça a importação conforme solicitado pelo programa.
+7. Agora volte ao painel de django admin e faça as operações de CRUD no painel como quiser.
+
