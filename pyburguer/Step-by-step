@@ -90,4 +90,6 @@ Não se esqueça de importar as bibliotecas:
 9. O djando pegará a imagem de onde estiver e vai gravar no diretório static/images/burguer/img 
 
 *** LAYOUT E BOOTSTRAP ***
+Configuraremos as páginas html de acordo com o layout nav bar do bootstrap
+Altere a base.html com tags django e crie uma nova pasta dentro de templates chamada fragments e crie um arquivo html chamado navbar. Commit 09:09
      
