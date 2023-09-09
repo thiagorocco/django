@@ -67,3 +67,27 @@ o app 'burguer'
     Vá em burguer/admin.py e inclua a seguinte linha: admin.site.register(Produto), faça a importação conforme solicitado pelo programa.
 7. Agora volte ao painel de django admin e faça as operações de CRUD no painel como quiser.
 
+*** TRABALHANDO COM ARQUIVOS ESTÁTICOS(IMAGENS, CSS E JAVASCRIPT) ***
+
+1. Limpe os registros da tabela Produto do banco de dados, pois iremos incluir um novo campo para imagens.
+2. Vá até o arquivo burguer/models.py e inclua um atributo imagem do tipo ImageField.
+    imagem = models.ImageField(upload_to= 'burguer/img', default='', null=False, blank=False)
+3. Instale a biblioteca Pillow com pip install Pillow
+3. Rode o comando python manage.py makemigrations e depois o comando python manage.py migrate.
+4. Veja que o atributo imagem agora está no banco de dados, porém não está funcionando, é preciso informar ao django o caminho de arquivos estáticos.
+5. Vamos até settings.py na pasta do projeto.
+6. Vá até a linha da constante STATIC_URL e abaixo dela inclua a constante STATIC_ROOT e atribua o valor = os.path.join(BASE_DIR, STATIC_URL).
+Esse comando exige que a biblioteca os seja importada.
+7. Abaixo de STATIC_ROOT inclua mais duas constantes:
+    MEDIA_URL = 'media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+Esses nomes de constante são padrões do django.
+8. Por fim, para que o carregamento da imagem funcione corretamente vá até burguer/urls.py e inclua logo após o colchete de urlpatterns a seguinte instrução:
+     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+Não se esqueça de importar as bibliotecas: 
+    from django.conf import settings
+    from django.conf.urls.static import static
+9. O djando pegará a imagem de onde estiver e vai gravar no diretório static/images/burguer/img 
+
+*** LAYOUT E BOOTSTRAP ***
+     
