@@ -91,5 +91,10 @@ Não se esqueça de importar as bibliotecas:
 
 *** LAYOUT E BOOTSTRAP ***
 Configuraremos as páginas html de acordo com o layout nav bar do bootstrap
-Altere a base.html com tags django e crie uma nova pasta dentro de templates chamada fragments e crie um arquivo html chamado navbar. Commit 09:09
-     
+1. Altere a base.html com tags django e crie uma nova pasta dentro de templates chamada fragments e crie um arquivo html chamado navbar. Commit 09:09
+2. Vá ao site do bootstrap e copie e cole o código navbar padrão dele.
+3. Vá até o arquivo home.html e, entre o título e o content insira:
+    {% block header %}
+        {% include 'fragments/navbar.html' %}
+    {% endblock %}
+4. Faça algumas alterações no arquivo navbar.html como a navbar-brand, elimine dropdown-menu e o nav-item disabled
