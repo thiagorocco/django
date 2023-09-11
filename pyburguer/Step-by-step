@@ -98,3 +98,6 @@ Configuraremos as páginas html de acordo com o layout nav bar do bootstrap
         {% include 'fragments/navbar.html' %}
     {% endblock %}
 4. Faça algumas alterações no arquivo navbar.html como a navbar-brand, elimine dropdown-menu e o nav-item disabled
+5. Na classe navbar-nav insira mais a classe "ms-auto" do bootstrap para centralizar o conteúdo.
+6. Troque o texto das tags e na tag nav troque a cor substituindo o bg-... por bg-dark.
+7. No elemento <a> com classe navbar-brand insira a classe "text-warning fs-3" para formatar a cor e o tamanho da fonte.
