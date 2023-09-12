@@ -105,3 +105,4 @@ Configuraremos as páginas html de acordo com o layout nav bar do bootstrap
 9. Vamos adicionar algumas imagens com fontawesome. Acrescente ao title a seguinte tag:
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 Assim será possível usar os ícones do fontawesome
+10. Ao contato insira a tag <i> seguida por classes do fontawesome que mostrem a imagem de icones e faça o mesmo para o contato.
