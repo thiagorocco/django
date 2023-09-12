@@ -117,3 +117,7 @@ BANNER + CARREGAMENTOS DE IMAGENS ESTÁTICAS
 7. Em home.html copie o bloco navbar e cole logo abaixo dele. Altere de navbar para banner tanto no bloco como no include.
 8. Dentro da pasta do app burguer crie o seguinte diretório: static/burguer e dentro dele insira a imagem.
 9. Para a imagem carregar é preciso alterar o arquivo burguer/urls.py na última linha, onde tiver MEDIA substitua por STATIC.
+
+CARDS E GRID CARDS
+1. Em home.html no bloco content elimine o h1 que está lá e faça um include: {% include 'fragments/conteudo.html '%}.
+2. Crie o arquivo conteudo.html na pasta fragments.
