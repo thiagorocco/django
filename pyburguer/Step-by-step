@@ -121,3 +121,4 @@ BANNER + CARREGAMENTOS DE IMAGENS ESTÁTICAS
 CARDS E GRID CARDS
 1. Em home.html no bloco content elimine o h1 que está lá e faça um include: {% include 'fragments/conteudo.html '%}.
 2. Crie o arquivo conteudo.html na pasta fragments.
+
