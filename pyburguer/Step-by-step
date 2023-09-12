@@ -106,3 +106,14 @@ Configuraremos as páginas html de acordo com o layout nav bar do bootstrap
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 Assim será possível usar os ícones do fontawesome
 10. Ao contato insira a tag <i> seguida por classes do fontawesome que mostrem a imagem de icones e faça o mesmo para o contato.
+
+BANNER + CARREGAMENTOS DE IMAGENS ESTÁTICAS
+1. Vamos ao arquivo base.html e insira a classe bg-dark no body.
+2. Dentro da div "col" troque a tag header por nav e no bloco django no lugar de header coloque navbar.
+3. Agora em home.html também troque header por navbar.
+4. No diretório fragments crie um arquivo chamado banner.html.
+5. Apague o código inicial html gerado pelo Pycharm. Insira div class="container-fluid" e outras tags dentro dela, não se esqueça de incluir o {% load static %} no inicio 
+6. Em base.html, dentro do main insira um bloco django chamando banner.
+7. Em home.html copie o bloco navbar e cole logo abaixo dele. Altere de navbar para banner tanto no bloco como no include.
+8. Dentro da pasta do app burguer crie o seguinte diretório: static/burguer e dentro dele insira a imagem.
+9. Para a imagem carregar é preciso alterar o arquivo burguer/urls.py na última linha, onde tiver MEDIA substitua por STATIC.
