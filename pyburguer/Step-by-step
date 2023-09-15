@@ -144,8 +144,9 @@
     4. Altera o nome e a descrição dos hamburgueres. Na verdade o que é descrição passará a ser nome e você precisa incluir uma descrição mais completa para os laches.
     5. Em models.py no método __str__ altere o return para self.nome em vez de self.descricao
     6. Vá até burguer/views.py e adicione ao método home um objeto da classe Produto(models) = produto = Produto.objects.all(). Não se esqueça de importá-lo.
-    7. Logo abaixo dessa declaração declare um dicionário que receberá esses dados do banco de dados = context = {'produtos' : produtos}
-    8.  
+    7. Logo abaixo dessa declaração declare um dicionário que receberá esses dados do banco de dados = context = {'produtos' : produtos} e m return passe esse dicionário como um novo parâmetro.
+    8. Vá até o template fragments/conteudo.html. Apague os dois últimos cards de produto, pois faremos a inserção dos cards dinamicamente pelos dados do banco de dados.
+    9. 
 
 
 
