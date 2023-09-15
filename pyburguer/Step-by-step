@@ -146,7 +146,8 @@
     6. Vá até burguer/views.py e adicione ao método home um objeto da classe Produto(models) = produto = Produto.objects.all(). Não se esqueça de importá-lo.
     7. Logo abaixo dessa declaração declare um dicionário que receberá esses dados do banco de dados = context = {'produtos' : produtos} e m return passe esse dicionário como um novo parâmetro.
     8. Vá até o template fragments/conteudo.html. Apague os dois últimos cards de produto, pois faremos a inserção dos cards dinamicamente pelos dados do banco de dados.
-    9. 
+    9. Agora envolve a div desse card dentro de um laço for. {% for produto in produtos %} <div></div> {% endfor %}.
+    10. Agora faça as alterações para o card ficar dinâmico. Na div "card-title" insira {{ produto.nome }}, na div "card-text" insira {{ produto.descricao }} e na div "span" insira logo após o R$ {{ produto.preco }}
 
 
 

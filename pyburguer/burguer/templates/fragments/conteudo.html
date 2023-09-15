@@ -12,19 +12,18 @@
 <div class="row my-3">
     <div class="col-md-10 offset-1">
         <div class="row row-cols-1 row-cols-md-3 g-4">
-
+            {% for produto in produtos %}
             <div class="col">
                 <div class="card bg-warning p-5" style="height:650px">
                     <img src="{% static 'burguer/burguer-slide.jpg' %}" class="card-img-top" alt="hamburguer">
                     <div class="card-body">
-                        <h5 class="card-title text-danger"> Card Title </h5>
-                        <p class="card-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Debitis ex, harum id in libero maxime minima minus nemo nesciunt nobis.
-                        </p>
+                        <h5 class="card-title text-danger"> {{ produto.nome }} </h5>
+                        <p class="card-text">{{ produto.descricao }}</p>
                     </div>
-                    <div class="span display-6 text-end mx-3 text-danger">R$ 20,99</div>
+                    <div class="span display-6 text-end mx-3 text-danger">R$ {{ produto.preco }}</div>
                 </div>
             </div>
+            {% endfor %}
         </div>
     </div>
 </div>
