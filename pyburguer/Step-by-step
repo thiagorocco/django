@@ -1,142 +1,151 @@
 *** Para eliminar processo do django no linux *** 
-sudo lsof -i :8000
-sudo kill -9 <PID>
+    sudo lsof -i :8000
+    sudo kill -9 <PID>
 
 
 
 *** O MÍNIMO PARA INICIAR UM PROJETO DJANGO ***
 
-1. Crie uma pasta para o novo projeto django com o ambiente virtual.
-2. pip install django. Dica: limpe o terminal com CTRL+L em vez de clear.
-3. pip freeze > requirements.txt.
-4. django-admin startproject core ..
-5. Rode o projeto: python manage.py runserver
+    1. Crie uma pasta para o novo projeto django com o ambiente virtual.
+    2. pip install django. Dica: limpe o terminal com CTRL+L em vez de clear.
+    3. pip freeze > requirements.txt.
+    4. django-admin startproject core ..
+    5. Rode o projeto: python manage.py runserver
 
-Comentários sobre os arquivos gerados:
-    Settings.py é o coração do django onde há a configuração de secret-key, hosts, installed_apps e root-url-conf.
-6. Crie o app burguer: django-admin startapp burguer.
-7. Dentro da pasta do app crie um arquivo chamado urls.py. Pegue o conteúdo de core/urls.py e copie e cole para ele.
-8. Em burguer/urls.py configure o urlpatterns dessa forma por ora: path('', views.home, name='home'),
-9. Agora crie essa view que você indicou em urls dentro do arquivo views.py:
-    def home(request):
-    return HttpResponse('Hello, World!!!')
-Isso ainda não é suficiente para o app funcionar. No arquivo core/urls.py, que é o arquivo global de urls, precisa ter
-uma rota configurada para o novo arquivo urls.py dentro de burguer.
-10. Em core/urls.py em urlpatterns insira a seguinte instrução:
-        path('', include('burguer.urls'))
-11. Por fim para o app funcionar vá até core/settings.py e na última linha de INSTALLED_APPS insira a seguinte instrução:
-    'burguer',
+    Comentários sobre os arquivos gerados:
+        Settings.py é o coração do django onde há a configuração de secret-key, hosts, installed_apps e root-url-conf.
+    6. Crie o app burguer: django-admin startapp burguer.
+    7. Dentro da pasta do app crie um arquivo chamado urls.py. Pegue o conteúdo de core/urls.py e copie e cole para ele.
+    8. Em burguer/urls.py configure o urlpatterns dessa forma por ora: path('', views.home, name='home'),
+    9. Agora crie essa view que você indicou em urls dentro do arquivo views.py:
+        def home(request):
+        return HttpResponse('Hello, World!!!')
+    Isso ainda não é suficiente para o app funcionar. No arquivo core/urls.py, que é o arquivo global de urls, precisa ter
+    uma rota configurada para o novo arquivo urls.py dentro de burguer.
+    10. Em core/urls.py em urlpatterns insira a seguinte instrução:
+            path('', include('burguer.urls'))
+    11. Por fim para o app funcionar vá até core/settings.py e na última linha de INSTALLED_APPS insira a seguinte instrução:
+        'burguer',
 
 *** INCLUSÃO DE TEMPLATES HTML COM BOOTSTRAP ***
-Dentro da pasta do app burguer, crie uma nova pasta chamada templates e dentro dela uma pasta chamada burguer. 
-Ficará assim: burguer/templates/burguer
-1. Crie uma página home.html com a inserção da folha e estilo e script bootstrap.
-2. Crie também o arquivo produto.html e insira o mesmo código nele. Será assim por enquanto, só mude o h1 para "Detalhes do produto".
-3. Crie um novo arquivo chamado base.html, copie o código de home.html e cole nele. Esse arquivo será usado para reaproveitar o código usandos as tags do django.
-4. Dentro de base.html apague o conteúdo dentro de title e insira a tag django {% block titulo %} {% endblock %}. Faça isso também em body {% block content %} {% endblock %}
-5. Em home.html apague todo o conteúdo html e insira as tags django {% extends 'burguer/base.html' %} e 
-{% block titulo %} Pyburguer {% endblock %}
+    Dentro da pasta do app burguer, crie uma nova pasta chamada templates e dentro dela uma pasta chamada burguer. 
+    Ficará assim: burguer/templates/burguer
+    1. Crie uma página home.html com a inserção da folha e estilo e script bootstrap.
+    2. Crie também o arquivo produto.html e insira o mesmo código nele. Será assim por enquanto, só mude o h1 para "Detalhes do produto".
+    3. Crie um novo arquivo chamado base.html, copie o código de home.html e cole nele. Esse arquivo será usado para reaproveitar o código usandos as tags do django.
+    4. Dentro de base.html apague o conteúdo dentro de title e insira a tag django {% block titulo %} {% endblock %}. Faça isso também em body {% block content %} {% endblock %}
+    5. Em home.html apague todo o conteúdo html e insira as tags django {% extends 'burguer/base.html' %} e 
+    {% block titulo %} Pyburguer {% endblock %}
 
-{% block content %}
-    <h1> Página inicial. Injeção de conteúdo!!! </h1>
-{% endblock %}
+    {% block content %}
+        <h1> Página inicial. Injeção de conteúdo!!! </h1>
+    {% endblock %}
 
 6. Atualize o arquivo view.py no método home para retornar render(request,'burguer/home.html')
 7. Faça o mesmo com o arquivo produto.html. Em burguer/view crie uma nova função com nome produto e em burguer.urls acrescente um novo path da view
 
 *** CRIAÇÃO DE MODELS ***
-Um model, segundo a documentação do django, é a fonte única e definitiva de informações sobre os dados que armazenamos
-1. Em burguer/models.py crie uma classe chamada Produto e herde a classe models.Model
-class Produto(models.Model):
-    descricao = models.TextField(null=False, blank=False)
-    preco = models.FloatField(null=False, blank=False)
+    Um model, segundo a documentação do django, é a fonte única e definitiva de informações sobre os dados que armazenamos
+    1. Em burguer/models.py crie uma classe chamada Produto e herde a classe models.Model
+    class Produto(models.Model):
+        descricao = models.TextField(null=False, blank=False)
+        preco = models.FloatField(null=False, blank=False)
 
-    def __str__(self):
-        return self.descricao
-2. Após a criação da classe Model, execute o comando no terminal: python manage.py makemigrations
-Esse comando prepara o modelo de dados para a posterior criação da tabela no banco de dados.
-O banco de dados padrão é o sqlite. Você pode conferir a configuração em core(pasta do projeto)/settings em DATABASES
-3 . Execute o comando python manage.py migrate
-Isso fará a criação efetiva das tabelas no banco de dados. Mas quais tabelas? São tabelas referente aos INSTALLED_APPS definidos em settings.py, incluindo
-o app 'burguer'
-4 . Agora crie um super usuário para acessar o banco de dados
-    python manage.py creatsuperuser
-        Define um nome, você pode ignorar o endereço de e-mail e precisa cadastrar uma senha.
-5. Rodando o servidor vá em localhost:8000/admin, digite usuario e senha e veja o painel administrativo do django.
-6. Vamos criar o acesso para manipular a model Produto.
-    Vá em burguer/admin.py e inclua a seguinte linha: admin.site.register(Produto), faça a importação conforme solicitado pelo programa.
-7. Agora volte ao painel de django admin e faça as operações de CRUD no painel como quiser.
+        def __str__(self):
+            return self.descricao
+    2. Após a criação da classe Model, execute o comando no terminal: python manage.py makemigrations
+    Esse comando prepara o modelo de dados para a posterior criação da tabela no banco de dados.
+    O banco de dados padrão é o sqlite. Você pode conferir a configuração em core(pasta do projeto)/settings em DATABASES
+    3 . Execute o comando python manage.py migrate
+    Isso fará a criação efetiva das tabelas no banco de dados. Mas quais tabelas? São tabelas referente aos INSTALLED_APPS definidos em settings.py, incluindo
+    o app 'burguer'
+    4 . Agora crie um super usuário para acessar o banco de dados
+        python manage.py creatsuperuser
+            Define um nome, você pode ignorar o endereço de e-mail e precisa cadastrar uma senha.
+    5. Rodando o servidor vá em localhost:8000/admin, digite usuario e senha e veja o painel administrativo do django.
+    6. Vamos criar o acesso para manipular a model Produto.
+        Vá em burguer/admin.py e inclua a seguinte linha: admin.site.register(Produto), faça a importação conforme solicitado pelo programa.
+    7. Agora volte ao painel de django admin e faça as operações de CRUD no painel como quiser.
 
 *** TRABALHANDO COM ARQUIVOS ESTÁTICOS(IMAGENS, CSS E JAVASCRIPT) ***
 
-1. Limpe os registros da tabela Produto do banco de dados, pois iremos incluir um novo campo para imagens.
-2. Vá até o arquivo burguer/models.py e inclua um atributo imagem do tipo ImageField.
-    imagem = models.ImageField(upload_to= 'burguer/img', default='', null=False, blank=False)
-3. Instale a biblioteca Pillow com pip install Pillow
-3. Rode o comando python manage.py makemigrations e depois o comando python manage.py migrate.
-4. Veja que o atributo imagem agora está no banco de dados, porém não está funcionando, é preciso informar ao django o caminho de arquivos estáticos.
-5. Vamos até settings.py na pasta do projeto.
-6. Vá até a linha da constante STATIC_URL e abaixo dela inclua a constante STATIC_ROOT e atribua o valor = os.path.join(BASE_DIR, STATIC_URL).
-Esse comando exige que a biblioteca os seja importada.
-7. Abaixo de STATIC_ROOT inclua mais duas constantes:
-    MEDIA_URL = 'media/'
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
-Esses nomes de constante são padrões do django.
-8. Por fim, para que o carregamento da imagem funcione corretamente vá até burguer/urls.py e inclua logo após o colchete de urlpatterns a seguinte instrução:
-     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-Não se esqueça de importar as bibliotecas: 
-    from django.conf import settings
-    from django.conf.urls.static import static
-9. O djando pegará a imagem de onde estiver e vai gravar no diretório static/images/burguer/img 
+    1. Limpe os registros da tabela Produto do banco de dados, pois iremos incluir um novo campo para imagens.
+    2. Vá até o arquivo burguer/models.py e inclua um atributo imagem do tipo ImageField.
+        imagem = models.ImageField(upload_to= 'burguer/img', default='', null=False, blank=False)
+    3. Instale a biblioteca Pillow com pip install Pillow
+    3. Rode o comando python manage.py makemigrations e depois o comando python manage.py migrate.
+    4. Veja que o atributo imagem agora está no banco de dados, porém não está funcionando, é preciso informar ao django o caminho de arquivos estáticos.
+    5. Vamos até settings.py na pasta do projeto.
+    6. Vá até a linha da constante STATIC_URL e abaixo dela inclua a constante STATIC_ROOT e atribua o valor = os.path.join(BASE_DIR, STATIC_URL).
+    Esse comando exige que a biblioteca os seja importada.
+    7. Abaixo de STATIC_ROOT inclua mais duas constantes:
+        MEDIA_URL = 'media/'
+        MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+    Esses nomes de constante são padrões do django.
+    8. Por fim, para que o carregamento da imagem funcione corretamente vá até burguer/urls.py e inclua logo após o colchete de urlpatterns a seguinte instrução:
+         + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    Não se esqueça de importar as bibliotecas: 
+        from django.conf import settings
+        from django.conf.urls.static import static
+    9. O djando pegará a imagem de onde estiver e vai gravar no diretório static/images/burguer/img 
 
 *** LAYOUT E BOOTSTRAP ***
-Configuraremos as páginas html de acordo com o layout nav bar do bootstrap
-1. Altere a base.html com tags django e crie uma nova pasta dentro de templates chamada fragments e crie um arquivo html chamado navbar. Commit 09:09
-2. Vá ao site do bootstrap e copie e cole o código navbar padrão dele.
-3. Vá até o arquivo home.html e, entre o título e o content insira:
-    {% block header %}
-        {% include 'fragments/navbar.html' %}
-    {% endblock %}
-4. Faça algumas alterações no arquivo navbar.html como a navbar-brand, elimine dropdown-menu e o nav-item disabled
-5. Na classe navbar-nav insira mais a classe "ms-auto" do bootstrap para centralizar o conteúdo.
-6. Troque o texto das tags e na tag nav troque a cor substituindo o bg-... por bg-dark.
-7. No elemento <a> com classe navbar-brand insira a classe "text-warning fs-3" para formatar a cor e o tamanho da fonte.
-8. Crie dois botões login e cadastra-se. Copie o código ul com os dois links <a> e faça algumas alterações para classes de botões.
-9. Vamos adicionar algumas imagens com fontawesome. Acrescente ao title a seguinte tag:
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-Assim será possível usar os ícones do fontawesome
-10. Ao contato insira a tag <i> seguida por classes do fontawesome que mostrem a imagem de icones e faça o mesmo para o contato.
+    Configuraremos as páginas html de acordo com o layout nav bar do bootstrap
+    1. Altere a base.html com tags django e crie uma nova pasta dentro de templates chamada fragments e crie um arquivo html chamado navbar. Commit 09:09
+    2. Vá ao site do bootstrap e copie e cole o código navbar padrão dele.
+    3. Vá até o arquivo home.html e, entre o título e o content insira:
+        {% block header %}
+            {% include 'fragments/navbar.html' %}
+        {% endblock %}
+    4. Faça algumas alterações no arquivo navbar.html como a navbar-brand, elimine dropdown-menu e o nav-item disabled
+    5. Na classe navbar-nav insira mais a classe "ms-auto" do bootstrap para centralizar o conteúdo.
+    6. Troque o texto das tags e na tag nav troque a cor substituindo o bg-... por bg-dark.
+    7. No elemento <a> com classe navbar-brand insira a classe "text-warning fs-3" para formatar a cor e o tamanho da fonte.
+    8. Crie dois botões login e cadastra-se. Copie o código ul com os dois links <a> e faça algumas alterações para classes de botões.
+    9. Vamos adicionar algumas imagens com fontawesome. Acrescente ao title a seguinte tag:
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    Assim será possível usar os ícones do fontawesome
+    10. Ao contato insira a tag <i> seguida por classes do fontawesome que mostrem a imagem de icones e faça o mesmo para o contato.
 
-BANNER + CARREGAMENTOS DE IMAGENS ESTÁTICAS
-1. Vamos ao arquivo base.html e insira a classe bg-dark no body.
-2. Dentro da div "col" troque a tag header por nav e no bloco django no lugar de header coloque navbar.
-3. Agora em home.html também troque header por navbar.
-4. No diretório fragments crie um arquivo chamado banner.html.
-5. Apague o código inicial html gerado pelo Pycharm. Insira div class="container-fluid" e outras tags dentro dela, não se esqueça de incluir o {% load static %} no inicio 
-6. Em base.html, dentro do main insira um bloco django chamando banner.
-7. Em home.html copie o bloco navbar e cole logo abaixo dele. Altere de navbar para banner tanto no bloco como no include.
-8. Dentro da pasta do app burguer crie o seguinte diretório: static/burguer e dentro dele insira a imagem.
-9. Para a imagem carregar é preciso alterar o arquivo burguer/urls.py na última linha, onde tiver MEDIA substitua por STATIC.
-10. Lembre-se a imagem deve estar armazenada em burguer/static/burguer/burguer-slide.jpg.
+    BANNER + CARREGAMENTOS DE IMAGENS ESTÁTICAS
+    1. Vamos ao arquivo base.html e insira a classe bg-dark no body.
+    2. Dentro da div "col" troque a tag header por nav e no bloco django no lugar de header coloque navbar.
+    3. Agora em home.html também troque header por navbar.
+    4. No diretório fragments crie um arquivo chamado banner.html.
+    5. Apague o código inicial html gerado pelo Pycharm. Insira div class="container-fluid" e outras tags dentro dela, não se esqueça de incluir o {% load static %} no inicio 
+    6. Em base.html, dentro do main insira um bloco django chamando banner.
+    7. Em home.html copie o bloco navbar e cole logo abaixo dele. Altere de navbar para banner tanto no bloco como no include.
+    8. Dentro da pasta do app burguer crie o seguinte diretório: static/burguer e dentro dele insira a imagem.
+    9. Para a imagem carregar é preciso alterar o arquivo burguer/urls.py na última linha, onde tiver MEDIA substitua por STATIC.
+    10. Lembre-se a imagem deve estar armazenada em burguer/static/burguer/burguer-slide.jpg.
 
-CARDS E GRID CARDS
-1. Em home.html no bloco content elimine o h1 que está lá e faça um include: {% include 'fragments/conteudo.html '%}.
-2. Crie o arquivo conteudo.html na pasta fragments.
-3. Insira a tag load static do django e insira divs com a classe row do bootstrap contendo o caminho das imagens como 
-<img src="{% static 'burguer/burguer-slide.jpg' %}" class="card-img-top" alt="hamburguer">
+    CARDS E GRID CARDS
+    1. Em home.html no bloco content elimine o h1 que está lá e faça um include: {% include 'fragments/conteudo.html '%}.
+    2. Crie o arquivo conteudo.html na pasta fragments.
+    3. Insira a tag load static do django e insira divs com a classe row do bootstrap contendo o caminho das imagens como 
+    <img src="{% static 'burguer/burguer-slide.jpg' %}" class="card-img-top" alt="hamburguer">
 
-QUERYSETAPI E RECUPERAÇÃO DE INFORMAÇÕES A PARTIR DO BANCO DE DADOS
-* Dessa vez para manipular as informações do BD não usaremos django admin e sim o django shell
-1. Instale o IPython através do comando: pip install IPython.
-2. Execute o comando python manage.py shell.
-3. Digite o comando = from burguer.models import Produto. Estamos importando o modelo Produto.
-4. Na próxima linha = produto = Produto(). Estamos criando um objeto do tipo Produto().
-5. Digite = produto.descricao = "Bomba Atômica".
-6. Digite = produto.preco = 19.99.
-7. Por fim digite = produto.save(). Caso esse comando dê erro você precisará executar novamente os comandos makemigrations e migrate do python manage.py.
-8. Consulte os produtos cadastrados através do comando: produtos = Produto.objects.all(), isso é equivalente a um SELECT * FROM produtos.
-9. Digite produtos e você verá os registros cadastrados dentro de um objeto QuerySet.
-10. *** Uma dúvida, ao usar os comandos acima ele apenas sobrescreve o segundo registro e não adiciona um terceiro *** PESQUISAR ***
+*** QUERYSETAPI E RECUPERAÇÃO DE INFORMAÇÕES A PARTIR DO BANCO DE DADOS ***
+    * Dessa vez para manipular as informações do BD não usaremos django admin e sim o django shell
+    1. Instale o IPython através do comando: pip install IPython.
+    2. Execute o comando python manage.py shell.
+    3. Digite o comando = from burguer.models import Produto. Estamos importando o modelo Produto.
+    4. Na próxima linha = produto = Produto(). Estamos criando um objeto do tipo Produto().
+    5. Digite = produto.descricao = "Bomba Atômica".
+    6. Digite = produto.preco = 19.99. Para cada novo registro a inserir é necessário criar um novo objeto de Produto. Ex. p1 = Produto, p2 = Produto.
+    7. Por fim digite = produto.save(). Caso esse comando dê erro você precisará executar novamente os comandos makemigrations e migrate do python manage.py.
+    8. Consulte os produtos cadastrados através do comando: produtos = Produto.objects.all(), isso é equivalente a um SELECT * FROM produtos.
+    9. Digite produtos e você verá os registros cadastrados dentro de um objeto QuerySet.
+
+    * CARREGANDO DE INFORMAÇÕES A PARTIR DO BANCO DE DADOS *
+    1. Abra o arquivo models.py e crie mais um atributo chamado "nome" do tipo TextField(null=False, blank=False, default="")
+    2. Após essa alteração execute os comandos: python manage.py makemigrations e python manage.py migrate
+    3. Execute o servidor e acesse o django/admin.
+    4. Altera o nome e a descrição dos hamburgueres. Na verdade o que é descrição passará a ser nome e você precisa incluir uma descrição mais completa para os laches.
+    5. Em models.py no método __str__ altere o return para self.nome em vez de self.descricao
+    6. Vá até burguer/views.py e adicione ao método home um objeto da classe Produto(models) = produto = Produto.objects.all(). Não se esqueça de importá-lo.
+    7. Logo abaixo dessa declaração declare um dicionário que receberá esses dados do banco de dados = context = {'produtos' : produtos}
+    8.  
 
 
 
