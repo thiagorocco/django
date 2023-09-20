@@ -1,5 +1,14 @@
 {% extends 'burguer/base.html' %}
-{% block titulo %}Produto{% endblock %}
+
+{% block titulo %} Produto {% endblock %}
+
+{% block navbar %}
+    {% include 'fragments/navbar.html' %}
+{% endblock %}
+
+{% block banner %}
+{% endblock %}
+
 {% block content %}
-    <h1>Página do produto. Detalhes do produto</h1>
+    <h1 class="text-white">Meu produto</h1>
 {% endblock %}

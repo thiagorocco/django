@@ -149,5 +149,12 @@
     9. Agora envolve a div desse card dentro de um laço for. {% for produto in produtos %} <div></div> {% endfor %}.
     10. Agora faça as alterações para o card ficar dinâmico. Na div "card-title" insira {{ produto.nome }}, na div "card-text" insira {{ produto.descricao }} e na div "span" insira logo após o R$ {{ produto.preco }}
 
+*** FUNDAMENTOS DA NAVEGAÇÃO ENTRE PÁGINAS ***
+    *Deep link e sistema de rotas e passagens de parâmetros
+    1. Copie o conteúdo de home.html e sobrescreva o conteúdo de produto.html
+    2. Faça algumas alterações: Mude o conteúdo do block titulo para "Produto", limpe o conteúdo do block banner, limpe conteúdo do block content e adicione um h1 com class="textwhite" Meu Produto.
+    3. Agora vamos fazer um link da página conteúdo para a página de produto. No arquivo conteúdo.html envolva a tag img com a tag <a>:
+    <a href="{% url 'produto' produto.id %}"></a>
+
 
 
