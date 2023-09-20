@@ -154,7 +154,16 @@
     1. Copie o conteúdo de home.html e sobrescreva o conteúdo de produto.html
     2. Faça algumas alterações: Mude o conteúdo do block titulo para "Produto", limpe o conteúdo do block banner, limpe conteúdo do block content e adicione um h1 com class="textwhite" Meu Produto.
     3. Agora vamos fazer um link da página conteúdo para a página de produto. No arquivo conteúdo.html envolva a tag img com a tag <a>:
-    <a href="{% url 'produto' produto.id %}"></a>
+    <a href="{% url 'produtos' produto.id %}"></a>
+    4. Faça um ajuste em urls.py para o link funcionar: Em urlspatterns, no segundo path no 1.o parâmetro  altere para 'produtos/<int:produto_id>', no 2.o parametro
+    altere para views.detalhe_produto e no 3.o parametro altere para 'produtos'.
+    5. Vá em views.py e na função produto renomei-a para ''detalhe_produto' e insira um novo parametro = produto_id e no seu escopo, antes de return, declare:
+            produto = Produto.objects.get(pk=produto_id)
+            context = {
+                'produto': produto
+            }
+    6. No return da função detalhe_produto, insira no segundo parametro a variavel context.
+    7. Vá em produto.html e altera o h1 do bloco content para receber o nome dinâmico do banco de dados = 
 
 
 

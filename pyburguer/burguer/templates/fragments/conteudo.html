@@ -15,7 +15,7 @@
             {% for produto in produtos %}
             <div class="col">
                 <div class="card bg-warning p-5" style="height:650px">
-                    <a href="{% url 'produto' produto.id %}">
+                    <a href="{% url 'produtos' produto.id %}">
                         <img src="{% static 'burguer/burguer-slide.jpg' %}" class="card-img-top" alt="hamburguer">
                     </a>
                     <div class="card-body">
