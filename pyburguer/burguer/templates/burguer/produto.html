@@ -10,5 +10,10 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="text-white">{{ produto.descricao }}</h1>
+    <div class="col-md-6 offset-3 d-flex flex-column justify-content-center align-items-center vh-100">
+        <h1 class="text-info text-center mb-5">{{ produto.nome }}</h1>
+         <img src="{% static 'burguer/burguer-slide.jpg' %}" class="card-img-top" alt="hamburguer">
+        <h4 class="text-warning text-center">{{ produto.descricao }}</h4>
+        <div class="span display-4 text-info">Apenas R$ {{ produto.preco }}</div>
+    </div>
 {% endblock %}

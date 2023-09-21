@@ -150,6 +150,7 @@
     10. Agora faça as alterações para o card ficar dinâmico. Na div "card-title" insira {{ produto.nome }}, na div "card-text" insira {{ produto.descricao }} e na div "span" insira logo após o R$ {{ produto.preco }}
 
 *** FUNDAMENTOS DA NAVEGAÇÃO ENTRE PÁGINAS ***
+
     *Deep link e sistema de rotas e passagens de parâmetros
     1. Copie o conteúdo de home.html e sobrescreva o conteúdo de produto.html
     2. Faça algumas alterações: Mude o conteúdo do block titulo para "Produto", limpe o conteúdo do block banner, limpe conteúdo do block content e adicione um h1 com class="textwhite" Meu Produto.
@@ -163,7 +164,10 @@
                 'produto': produto
             }
     6. No return da função detalhe_produto, insira no segundo parametro a variavel context.
-    7. Vá em produto.html e altera o h1 do bloco content para receber o nome dinâmico do banco de dados = 
+    7. Vá em produto.html e altera o h1 do bloco content para receber o nome dinâmico do banco de dados = {{ produto.descricao }}
+
+    * Template para detalhamento do produto *
+    1. Acesse produto.html    
 
 
 
