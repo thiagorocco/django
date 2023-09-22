@@ -167,7 +167,20 @@
     7. Vá em produto.html e altera o h1 do bloco content para receber o nome dinâmico do banco de dados = {{ produto.descricao }}
 
     * Template para detalhamento do produto *
-    1. Acesse produto.html    
+    1. Acesse produto.html
+    2. Após o bloco {% extends 'burguer/base.html' %} acrescente {% load static %}.
+    3. Em block content adicione:
+        <div class="col-md-6 offset-3 d-flex flex-column justify-content-center align-items-center">
+            <h1 class="text-info text-center mb-5">{{ produto.nome }}</h1>
+             <img src="{% static 'burguer/burguer-slide.jpg' %}"
+                  class="card-img-top"
+                  alt="hamburguer"
+                  style="height:450px;width:450px">
+            <h4 class="text-warning text-center">{{ produto.descricao }}</h4>
+            <div class="span display-4 text-info">Apenas R$ {{ produto.preco }}</div>
+        </div>
+    * Link para a página inicial *
+    1. Vá em navbar.html e na primeira tag <a> em href insira "{% ulr 'home' %}"  
 
 
 
