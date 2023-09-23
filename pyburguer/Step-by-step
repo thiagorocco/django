@@ -180,7 +180,12 @@
             <div class="span display-4 text-info">Apenas R$ {{ produto.preco }}</div>
         </div>
     * Link para a página inicial *
-    1. Vá em navbar.html e na primeira tag <a> em href insira "{% ulr 'home' %}"  
+    1. Vá em navbar.html e na primeira tag <a> em href insira "{% ulr 'home' %}"
+    
+*** Recuperando imagens cadastradas via processo de upload (MEDIA_URL e MEDIA_ROOT) ***
+    1. Vá em produto.html e no source da imagem(src) apague o conteúdo existente e insira {{ produto.imagem.url }}
+    2. Em burguer/urls.py na última linha substitua "STATIC_URL" e "STATIC_ROOT" por "MEDIA_URL" e "STATIC_ROOT"
+    3. Voltando ao arquivo produto.html vá até a DIV class="card" e insira a classe do bootstrap p-5 para ficar um padding 5 em todas as direções.     
 
 
 
