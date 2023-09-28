@@ -17,7 +17,7 @@
 
     6. Crie o app burguer: django-admin startapp burguer.
     7. Dentro da pasta do app crie um arquivo chamado urls.py. Pegue o conteúdo de core/urls.py e copie e cole para ele.
-    8. Em burguer/urls.py configure o urlpatterns dessa forma por ora: path('', views.home, name='home'), 
+    8. Em burguer/urls.py inclua no urlpatterns path('', views.home, name='home') e importe a biblioteca views = from . import views
     9. Agora crie essa view que você indicou em urls dentro do arquivo views.py:
 
         def home(request):
