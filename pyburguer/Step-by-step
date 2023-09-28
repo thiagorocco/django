@@ -14,12 +14,15 @@
 
     Comentários sobre os arquivos gerados:
         Settings.py é o coração do django onde há a configuração de secret-key, hosts, installed_apps e root-url-conf.
+
     6. Crie o app burguer: django-admin startapp burguer.
     7. Dentro da pasta do app crie um arquivo chamado urls.py. Pegue o conteúdo de core/urls.py e copie e cole para ele.
-    8. Em burguer/urls.py configure o urlpatterns dessa forma por ora: path('', views.home, name='home'),
+    8. Em burguer/urls.py configure o urlpatterns dessa forma por ora: path('', views.home, name='home'), 
     9. Agora crie essa view que você indicou em urls dentro do arquivo views.py:
+
         def home(request):
         return HttpResponse('Hello, World!!!')
+
     Isso ainda não é suficiente para o app funcionar. No arquivo core/urls.py, que é o arquivo global de urls, precisa ter
     uma rota configurada para o novo arquivo urls.py dentro de burguer.
     10. Em core/urls.py em urlpatterns insira a seguinte instrução:
