@@ -9,7 +9,7 @@
     1. Crie uma pasta para o novo projeto django com o ambiente virtual.
     2. pip install django. Dica: limpe o terminal com CTRL+L em vez de clear.
     3. pip freeze > requirements.txt.
-    4. django-admin startproject core ..
+    4. django-admin startproject core .
     5. Rode o projeto: python manage.py runserver
 
     Comentários sobre os arquivos gerados:
