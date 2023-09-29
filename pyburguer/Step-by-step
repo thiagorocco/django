@@ -9,13 +9,13 @@
     1. Crie uma pasta para o novo projeto django com o ambiente virtual.
     2. pip install django. Dica: limpe o terminal com CTRL+L em vez de clear.
     3. pip freeze > requirements.txt.
-    4. django-admin startproject core .
+    4. django-admin startproject nome_do_projeto . (o ponto é importante para que o manage.py fique na pasta raiz)
     5. Rode o projeto: python manage.py runserver
 
     Comentários sobre os arquivos gerados:
         Settings.py é o coração do django onde há a configuração de secret-key, hosts, installed_apps e root-url-conf.
 
-    6. Crie o app burguer: django-admin startapp burguer.
+    6. Crie o app: django-admin startapp nome_do_app.
     7. Dentro da pasta do app crie um arquivo chamado urls.py. Pegue o conteúdo de core/urls.py e copie e cole para ele.
     8. Em burguer/urls.py inclua no urlpatterns path('', views.home, name='home') e importe a biblioteca views = from . import views
     9. Agora crie essa view que você indicou em urls dentro do arquivo views.py:
@@ -26,13 +26,13 @@
     Isso ainda não é suficiente para o app funcionar. No arquivo core/urls.py, que é o arquivo global de urls, precisa ter
     uma rota configurada para o novo arquivo urls.py dentro de burguer.
     10. Em core/urls.py em urlpatterns insira a seguinte instrução:
-            path('', include('burguer.urls'))
+            path('', include('nome_do_app.urls'))
     11. Por fim para o app funcionar vá até core/settings.py e na última linha de INSTALLED_APPS insira a seguinte instrução:
         'burguer',
 
 *** INCLUSÃO DE TEMPLATES HTML COM BOOTSTRAP ***
-    Dentro da pasta do app burguer, crie uma nova pasta chamada templates e dentro dela uma pasta chamada burguer. 
-    Ficará assim: burguer/templates/burguer
+    Dentro da pasta do app nome_do_app, crie uma nova pasta chamada templates e dentro dela uma pasta chamada nome_do_app. 
+    Ficará assim: nome_do_app/templates/nome_do_app
     1. Crie uma página home.html com a inserção da folha e estilo e script bootstrap.
     2. Crie também o arquivo produto.html e insira o mesmo código nele. Será assim por enquanto, só mude o h1 para "Detalhes do produto".
     3. Crie um novo arquivo chamado base.html, copie o código de home.html e cole nele. Esse arquivo será usado para reaproveitar o código usandos as tags do django.
@@ -43,6 +43,11 @@
     {% block content %}
         <h1> Página inicial. Injeção de conteúdo!!! </h1>
     {% endblock %}
+
+
+    ** Reformulando esse passo a passo **
+    1. Crie uma página base.html incluindo as tags html com os blocos django para o titulo, para a navbar, para o banner e para o content(conteudo).
+    
 
 6. Atualize o arquivo view.py no método home para retornar render(request,'burguer/home.html')
 7. Faça o mesmo com o arquivo produto.html. Em burguer/view crie uma nova função com nome produto e em burguer.urls acrescente um novo path da view
