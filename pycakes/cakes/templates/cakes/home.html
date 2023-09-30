@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'cakes/base.html' %}
 
-</body>
-</html>
+{% block titulo %} Bolos e Tortas {% endblock %}
+
+{% block navbar %}
+    {% include 'fragments/navbar.html' %}
+{% endblock %}
+
+{% block banner %}
+    {% include 'fragments/banner.html' %}
+{% endblock %}
+
+{% block content %}
+    {% include 'fragments/conteudo.html' %}
+{% endblock %}
