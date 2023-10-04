@@ -170,10 +170,10 @@
         nome = models.TextField(null=False, blank=False, default="")
         descricao = models.TextField(null=False, blank=False)
         preco = models.FloatField(null=False, blank=False)
-        imagem = models.ImageField(upload_to='burguer/img', default='', null=False, blank=False)
+        imagem = models.ImageField(upload_to='nome_do_app/img', default='', null=False, blank=False)
 
 
-    *** Parei aqui ***
+    2. Dentro da pasta do app crie a pasta img
 
 
     2. Após a criação da classe Model, execute o comando no terminal: python manage.py makemigrations
