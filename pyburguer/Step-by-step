@@ -50,12 +50,17 @@
 *** CRIAÇÃO DE MODELS ***
     Um model, segundo a documentação do django, é a fonte única e definitiva de informações sobre os dados que armazenamos
     1. Em burguer/models.py crie uma classe chamada Produto e herde a classe models.Model
-    class Produto(models.Model):
-        descricao = models.TextField(null=False, blank=False)
-        preco = models.FloatField(null=False, blank=False)
+        from django.db import models
 
-        def __str__(self):
-            return self.descricao
+        # Create your models here.
+        class Produto(models.Model):
+            nome = models.TextField(null=False, blank=False, default="")
+            descricao = models.TextField(null=False, blank=False)
+            preco = models.FloatField(null=False, blank=False)
+            imagem = models.ImageField(upload_to='burguer/img', default='', null=False, blank=False)
+
+    def __str__(self):
+        return self.nome#, self.preco
     2. Após a criação da classe Model, execute o comando no terminal: python manage.py makemigrations
     Esse comando prepara o modelo de dados para a posterior criação da tabela no banco de dados.
     O banco de dados padrão é o sqlite. Você pode conferir a configuração em core(pasta do projeto)/settings em DATABASES

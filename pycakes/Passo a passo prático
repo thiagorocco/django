@@ -63,6 +63,7 @@
                 integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
         </body>
         </html>
+
     2. Ainda nesse mesmo diretório crie o arquivo home.html que reutilizará o template base.html com tags django através do seguinte código:
         {% extends 'nome_do_app/base.html' %}
 
@@ -79,11 +80,13 @@
         {% block content %}
             {% include 'fragments/conteudo.html' %}
         {% endblock %}
+
+    3. Atualize o arquivo view.py no método home para retornar render(request,'nome_do_app/home.html') 
     
-    3. Dentro da pasta do app, crie uma pasta e uma subpasta = static/nome_do_app. Dentro dela insira uma imagem de apresentação inicial do seu produto que
+    4. Dentro da pasta do app, crie uma pasta e uma subpasta = static/nome_do_app. Dentro dela insira uma imagem de apresentação inicial do seu produto que
     ficará vinculada à página banner. 
-    4. Crie uma pasta dentro de templates chamada "fragments".  Dentro desse diretório crie os arquivos html chamados banner, conteudo e navbar.
-    5. Na página banner.html insira o seguinte código:
+    5. Crie uma pasta dentro de templates chamada "fragments".  Dentro desse diretório crie os arquivos html chamados banner, conteudo e navbar.
+    6. Na página banner.html insira o seguinte código:
 
     {% load static %}
     <div class="container-fluid mt-5">
@@ -106,7 +109,7 @@
         </div>
     </div>
 
-    6. A página navbar.html será responsável pelo menuzinho de opções na parte de cima do site. Insira o seguinte código html com as classes Bootstrap. 
+    7. A página navbar.html será responsável pelo menuzinho de opções na parte de cima do site. Insira o seguinte código html com as classes Bootstrap. 
     Apenas a tag <a> com o título do App conterá uma tag django que redireciona para a home.
     
         <nav class="navbar navbar-expand-lg bg-dark">
@@ -152,21 +155,27 @@
           </div>
         </nav>
 
-    7. 
+    8. Antes de prosseguirmos com a criação da página conteudo.html. Vamos criar um banco de dados e registros para navegar entre eles. Para isso
+    é necessário criar models e migrations no django.
+    
 
-
-6. Atualize o arquivo view.py no método home para retornar render(request,'burguer/home.html')
-7. Faça o mesmo com o arquivo produto.html. Em burguer/view crie uma nova função com nome produto e em burguer.urls acrescente um novo path da view
 
 *** CRIAÇÃO DE MODELS ***
     Um model, segundo a documentação do django, é a fonte única e definitiva de informações sobre os dados que armazenamos
-    1. Em burguer/models.py crie uma classe chamada Produto e herde a classe models.Model
+    1. Em nome_do_app/models.py crie uma classe chamada Produto e herde a classe models.Model
+    from django.db import models
+
+    # Create your models here.
     class Produto(models.Model):
+        nome = models.TextField(null=False, blank=False, default="")
         descricao = models.TextField(null=False, blank=False)
         preco = models.FloatField(null=False, blank=False)
+        imagem = models.ImageField(upload_to='burguer/img', default='', null=False, blank=False)
 
-        def __str__(self):
-            return self.descricao
+
+    *** Parei aqui ***
+
+
     2. Após a criação da classe Model, execute o comando no terminal: python manage.py makemigrations
     Esse comando prepara o modelo de dados para a posterior criação da tabela no banco de dados.
     O banco de dados padrão é o sqlite. Você pode conferir a configuração em core(pasta do projeto)/settings em DATABASES
