@@ -172,23 +172,38 @@
         preco = models.FloatField(null=False, blank=False)
         imagem = models.ImageField(upload_to='nome_do_app/img', default='', null=False, blank=False)
 
+        def __str__(self):
+            return self.nome
 
-    2. Dentro da pasta do app crie a pasta img
+
+    2. Dentro da pasta do app crie a pasta img.
+
+    3. Execute o comando: python -m pip install Pillow. Isso é necessário para usar campos do tipo ImageField.
 
 
-    2. Após a criação da classe Model, execute o comando no terminal: python manage.py makemigrations
-    Esse comando prepara o modelo de dados para a posterior criação da tabela no banco de dados.
-    O banco de dados padrão é o sqlite. Você pode conferir a configuração em core(pasta do projeto)/settings em DATABASES
-    3 . Execute o comando python manage.py migrate
-    Isso fará a criação efetiva das tabelas no banco de dados. Mas quais tabelas? São tabelas referente aos INSTALLED_APPS definidos em settings.py, incluindo
-    o app 'burguer'
-    4 . Agora crie um super usuário para acessar o banco de dados
-        python manage.py creatsuperuser
-            Define um nome, você pode ignorar o endereço de e-mail e precisa cadastrar uma senha.
-    5. Rodando o servidor vá em localhost:8000/admin, digite usuario e senha e veja o painel administrativo do django.
-    6. Vamos criar o acesso para manipular a model Produto.
-        Vá em burguer/admin.py e inclua a seguinte linha: admin.site.register(Produto), faça a importação conforme solicitado pelo programa.
-    7. Agora volte ao painel de django admin e faça as operações de CRUD no painel como quiser.
+    4. Execute o comando: python manage.py makemigrations
+        Esse comando prepara o modelo de dados para a posterior criação da tabela no banco de dados.
+        O banco de dados padrão é o sqlite. Você pode conferir a configuração em core(pasta do projeto)/settings em DATABASES
+    5 . Execute o comando: python manage.py migrate
+        Isso fará a criação efetiva das tabelas no banco de dados. Mas quais tabelas? São tabelas referente aos INSTALLED_APPS definidos em settings.py, incluindo
+        o app 'nome_do_app'
+    6 . Execute o comando: python manage.py creatsuperuser
+        Isso cria um super usuário para acessar o banco de dados
+            Defina um nome*, você pode ignorar o endereço de e-mail e precisa cadastrar uma senha*.
+
+    7. Vamos criar o acesso para manipular a model Produto.
+        Vá em nome_do_app/admin.py e inclua o seguinte código: 
+            
+            from django.contrib import admin
+            from cakes.models import Produto
+
+            # Register your models here.
+            admin.site.register(Produto)
+
+    8. Agora rode o servidor django(python manage.py runserver). Acesse localhost:8000/admin, informe login e senha que cadastrou e 
+    faça as operações de CRUD no painel como quiser.
+
+    9. Cadastre ao menos 3 produtos incluindo nome, descrição, preço e foto.
 
 *** TRABALHANDO COM ARQUIVOS ESTÁTICOS(IMAGENS, CSS E JAVASCRIPT) ***
 

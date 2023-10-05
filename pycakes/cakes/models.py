@@ -6,3 +6,6 @@ class Produto(models.Model):
     descricao = models.TextField(null=False, blank=False)
     preco = models.FloatField(null=False, blank=False)
     imagem = models.ImageField(upload_to='cakes/img', default='', null=False, blank=False)
+
+    def __str__(self):
+        return self.nome
