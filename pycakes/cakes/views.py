@@ -1,5 +1,12 @@
 from django.shortcuts import render
+from cakes.models import Produto
 
 # Create your views here.
 def home(request):
-    return render(request, 'cakes/home.html')
+    produtos = Produto.objects.all()
+    context = {
+        'produtos': produtos
+    }
+    return render(request, 'cakes/home.html', context)
+def produto(request):
+    return render(request, 'cakes/produto.html')

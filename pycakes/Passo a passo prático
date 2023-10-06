@@ -247,7 +247,7 @@
         
     
 
-*** QUERYSETAPI E RECUPERAÇÃO DE INFORMAÇÕES A PARTIR DO BANCO DE DADOS ***
+*** (OPCIONAL) QUERYSETAPI E RECUPERAÇÃO DE INFORMAÇÕES A PARTIR DO BANCO DE DADOS ***
     * Dessa vez para manipular as informações do BD não usaremos django admin e sim o django shell
     1. Instale o IPython através do comando: pip install IPython.
     2. Execute o comando python manage.py shell.
@@ -259,14 +259,26 @@
     8. Consulte os produtos cadastrados através do comando: produtos = Produto.objects.all(), isso é equivalente a um SELECT * FROM produtos.
     9. Digite produtos e você verá os registros cadastrados dentro de um objeto QuerySet.
 
-    * CARREGANDO DE INFORMAÇÕES A PARTIR DO BANCO DE DADOS *
-    1. Abra o arquivo models.py e crie mais um atributo chamado "nome" do tipo TextField(null=False, blank=False, default="")
-    2. Após essa alteração execute os comandos: python manage.py makemigrations e python manage.py migrate
-    3. Execute o servidor e acesse o django/admin.
-    4. Altera o nome e a descrição dos hamburgueres. Na verdade o que é descrição passará a ser nome e você precisa incluir uma descrição mais completa para os laches.
-    5. Em models.py no método __str__ altere o return para self.nome em vez de self.descricao
-    6. Vá até burguer/views.py e adicione ao método home um objeto da classe Produto(models) = produto = Produto.objects.all(). Não se esqueça de importá-lo.
-    7. Logo abaixo dessa declaração declare um dicionário que receberá esses dados do banco de dados = context = {'produtos' : produtos} e m return passe esse dicionário como um novo parâmetro.
+*** CARREGANDO DE INFORMAÇÕES A PARTIR DO BANCO DE DADOS ***
+ 
+    1. Vá até nome_do_app/views.py e insira esse código:
+
+    from django.shortcuts import render
+    from cakes.models import Produto
+
+    # Create your views here.
+    def home(request):
+        produtos = Produto.objects.all()
+        context = {
+            'produtos': produtos
+        }
+        return render(request, 'cakes/home.html', context)
+
+    def produto(request):
+        return render(request, 'cakes/produto.html')
+    
+    2. Note que agora temos uma view chamada "produto", a qual deverá ter uma página de template vinculada
+
     8. Vá até o template fragments/conteudo.html. Apague os dois últimos cards de produto, pois faremos a inserção dos cards dinamicamente pelos dados do banco de dados.
     9. Agora envolve a div desse card dentro de um laço for. {% for produto in produtos %} <div></div> {% endfor %}.
     10. Agora faça as alterações para o card ficar dinâmico. Na div "card-title" insira {{ produto.nome }}, na div "card-text" insira {{ produto.descricao }} e na div "span" insira logo após o R$ {{ produto.preco }}
