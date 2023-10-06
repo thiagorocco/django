@@ -225,41 +225,27 @@
         from django.conf.urls.static import static
     9. O djando pegará a imagem de onde estiver e vai gravar no diretório static/images/nome_do_app/img 
 
-*** LAYOUT E BOOTSTRAP ***
-    Configuraremos as páginas html de acordo com o layout nav bar do bootstrap
-    1. Altere a base.html com tags django e crie uma nova pasta dentro de templates chamada fragments e crie um arquivo html chamado navbar. Commit 09:09
-    2. Vá ao site do bootstrap e copie e cole o código navbar padrão dele.
-    3. Vá até o arquivo home.html e, entre o título e o content insira:
-        {% block header %}
-            {% include 'fragments/navbar.html' %}
-        {% endblock %}
-    4. Faça algumas alterações no arquivo navbar.html como a navbar-brand, elimine dropdown-menu e o nav-item disabled
-    5. Na classe navbar-nav insira mais a classe "ms-auto" do bootstrap para centralizar o conteúdo.
-    6. Troque o texto das tags e na tag nav troque a cor substituindo o bg-... por bg-dark.
-    7. No elemento <a> com classe navbar-brand insira a classe "text-warning fs-3" para formatar a cor e o tamanho da fonte.
-    8. Crie dois botões login e cadastra-se. Copie o código ul com os dois links <a> e faça algumas alterações para classes de botões.
-    9. Vamos adicionar algumas imagens com fontawesome. Acrescente ao title a seguinte tag:
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    Assim será possível usar os ícones do fontawesome
-    10. Ao contato insira a tag <i> seguida por classes do fontawesome que mostrem a imagem de icones e faça o mesmo para o contato.
 
-    BANNER + CARREGAMENTOS DE IMAGENS ESTÁTICAS
-    1. Vamos ao arquivo base.html e insira a classe bg-dark no body.
-    2. Dentro da div "col" troque a tag header por nav e no bloco django no lugar de header coloque navbar.
-    3. Agora em home.html também troque header por navbar.
-    4. No diretório fragments crie um arquivo chamado banner.html.
-    5. Apague o código inicial html gerado pelo Pycharm. Insira div class="container-fluid" e outras tags dentro dela, não se esqueça de incluir o {% load static %} no inicio 
-    6. Em base.html, dentro do main insira um bloco django chamando banner.
-    7. Em home.html copie o bloco navbar e cole logo abaixo dele. Altere de navbar para banner tanto no bloco como no include.
-    8. Dentro da pasta do app burguer crie o seguinte diretório: static/burguer e dentro dele insira a imagem.
-    9. Para a imagem carregar é preciso alterar o arquivo burguer/urls.py na última linha, onde tiver MEDIA substitua por STATIC.
-    10. Lembre-se a imagem deve estar armazenada em burguer/static/burguer/burguer-slide.jpg.
+    PAREI AQUI ...
 
-    CARDS E GRID CARDS
-    1. Em home.html no bloco content elimine o h1 que está lá e faça um include: {% include 'fragments/conteudo.html '%}.
-    2. Crie o arquivo conteudo.html na pasta fragments.
-    3. Insira a tag load static do django e insira divs com a classe row do bootstrap contendo o caminho das imagens como 
-    <img src="{% static 'burguer/burguer-slide.jpg' %}" class="card-img-top" alt="hamburguer">
+
+
+*** PÁGINA DE CONTEÚDO ***
+
+    1. No arquivo conteudo.html, apague tudo o que estiver escrito antes e insira o seguinte código html:
+
+        {% load static %}
+        <div class="row">
+            <div class="row">
+                <div class="container bg-danger rounded my-4">
+                    <div class="spam text-white text-center display-4 fw-bold">
+                        Texto que você quiser escrever
+                    </div>
+                </div>
+            </div>
+        </div> 
+        
+    
 
 *** QUERYSETAPI E RECUPERAÇÃO DE INFORMAÇÕES A PARTIR DO BANCO DE DADOS ***
     * Dessa vez para manipular as informações do BD não usaremos django admin e sim o django shell
