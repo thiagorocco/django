@@ -8,5 +8,5 @@ def home(request):
         'produtos': produtos
     }
     return render(request, 'cakes/home.html', context)
-def produto(request):
+def detalhe_produto(request):
     return render(request, 'cakes/produto.html')
