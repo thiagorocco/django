@@ -302,13 +302,47 @@
         {% endblock %}
     
 
-    8. Vá até o template fragments/conteudo.html. Apague os dois últimos cards de produto, pois faremos a inserção dos cards dinamicamente pelos dados do banco de dados.
-    9. Agora envolve a div desse card dentro de um laço for. {% for produto in produtos %} <div></div> {% endfor %}.
-    10. Agora faça as alterações para o card ficar dinâmico. Na div "card-title" insira {{ produto.nome }}, na div "card-text" insira {{ produto.descricao }} e na div "span" insira logo após o R$ {{ produto.preco }}
+    3. Vá até o template fragments/conteudo.html e aqui vamos inserir um código que adicionará os cards dos produtos dinamicamente pelos dados do banco de dados através do laço for do django:
+    
+    {% load static %}
+    <div class="row">
+        <div class="row">
+            <div class="container bg-danger rounded my-4">
+                <div class="spam text-white text-center display-4 fw-bold">
+                    Texto chamativo que você quiser escrever
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row my-3">
+        <div class="col-md-10 offset-1">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for produto in produtos %}
+                <div class="col">
+                    <div class="card bg-warning p-5" style="height:650px">
+                        <a href="{% url 'produtos' produto.id %}">
+                            <img src="{{ produto.imagem.url }}" class="card-img-top" alt="doce">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title text-danger"> {{ produto.nome }} </h5>
+                            <p class="card-text">{{ produto.descricao }}</p>
+                        </div>
+                        <div class="span display-6 text-end mx-3 text-danger">R$ {{ produto.preco }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+        
+
+    *** Parei aqui ***
 
 *** FUNDAMENTOS DA NAVEGAÇÃO ENTRE PÁGINAS ***
 
     *Deep link e sistema de rotas e passagens de parâmetros
+
     1. Copie o conteúdo de home.html e sobrescreva o conteúdo de produto.html
     2. Faça algumas alterações: Mude o conteúdo do block titulo para "Produto", limpe o conteúdo do block banner, limpe conteúdo do block content e adicione um h1 com class="textwhite" Meu Produto.
     3. Agora vamos fazer um link da página conteúdo para a página de produto. No arquivo conteúdo.html envolva a tag img com a tag <a>:
