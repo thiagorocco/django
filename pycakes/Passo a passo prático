@@ -359,30 +359,13 @@
                     context = {
                         'produto': produto
                     }
-                    return render(request, 'burguer/produto.html', context)
-
-    6. No return da função detalhe_produto, insira no segundo parametro a variavel context.
-    7. Vá em produto.html e altera o h1 do bloco content para receber o nome dinâmico do banco de dados = {{ produto.descricao }}
-
-    * Template para detalhamento do produto *
-    1. Acesse produto.html
-    2. Após o bloco {% extends 'burguer/base.html' %} acrescente {% load static %}.
-    3. Em block content adicione:
-        <div class="col-md-6 offset-3 d-flex flex-column justify-content-center align-items-center">
-            <h1 class="text-info text-center mb-5">{{ produto.nome }}</h1>
-             <img src="{% static 'burguer/burguer-slide.jpg' %}"
-                  class="card-img-top"
-                  alt="hamburguer"
-                  style="height:450px;width:450px">
-            <h4 class="text-warning text-center">{{ produto.descricao }}</h4>
-            <div class="span display-4 text-info">Apenas R$ {{ produto.preco }}</div>
-        </div>
-    * Link para a página inicial *
-    1. Vá em navbar.html e na primeira tag <a> em href insira "{% ulr 'home' %}"
+                    return render(request, 'nome_do_app/produto.html', context)
     
 *** Recuperando imagens cadastradas via processo de upload (MEDIA_URL e MEDIA_ROOT) ***
     1. Vá em produto.html e no source da imagem(src) apague o conteúdo existente e insira {{ produto.imagem.url }}
-    2. Em burguer/urls.py na última linha substitua "STATIC_URL" e "STATIC_ROOT" por "MEDIA_URL" e "STATIC_ROOT"
+
+    ... Parei aqui ...
+    
     3. Voltando ao arquivo produto.html vá até a DIV class="card" e insira a classe do bootstrap p-5 para ficar um padding 5 em todas as direções.     
 
 
