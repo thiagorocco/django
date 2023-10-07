@@ -295,7 +295,7 @@
                  <img src="{% static 'nome_do_app/imagem.jpg' %}"
                       class="card-img-top"
                       alt="nome da imagem"
-                      style="height:450px;width:450px">
+                      style="height:450px;width:450px">   <!-- AQUI VOCÊ INSERE A ALTURA E LARGURA QUE MELHOR FICAR PARA AS SUAS FOTOS -->
                 <h4 class="text-warning text-center">{{ produto.descricao }}</h4>
                 <div class="span display-4 text-info">Apenas R$ {{ produto.preco }}</div>
             </div>
@@ -362,11 +362,8 @@
                     return render(request, 'nome_do_app/produto.html', context)
     
 *** Recuperando imagens cadastradas via processo de upload (MEDIA_URL e MEDIA_ROOT) ***
-    1. Vá em produto.html e no source da imagem(src) apague o conteúdo existente e insira {{ produto.imagem.url }}
-
-    ... Parei aqui ...
-    
-    3. Voltando ao arquivo produto.html vá até a DIV class="card" e insira a classe do bootstrap p-5 para ficar um padding 5 em todas as direções.     
+    1. Vá em produto.html e no source da imagem(src) apague o conteúdo existente e insira {{ produto.imagem.url }}   
+    2. Voltando ao arquivo produto.html vá até a DIV class="card" e insira a classe do bootstrap p-5 para ficar um padding 5 em todas as direções.     
 
 
 
