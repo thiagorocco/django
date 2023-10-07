@@ -346,11 +346,21 @@
         Em urlspatterns, logo após o primeiro path da view home acrescente o seguinte path:
             path('produtos/<int:produto_id>', views.detalhe_produto, name='produtos')
 
-    2. Vá em views.py e na função produto renomei-a para 'detalhe_produto' e insira um novo parametro = produto_id e no seu escopo, antes de return, declare:
+    2. Vá em views.py e na função produto renomei-a para 'detalhe_produto' e insira um novo parametro produto_id e no seu escopo, antes de return, declare:
             produto = Produto.objects.get(pk=produto_id)
             context = {
                 'produto': produto
             }
+
+            Código completo da função detalhe_produto:
+
+                def detalhe_produto(request, produto_id):
+                    produto = Produto.objects.get(pk=produto_id)
+                    context = {
+                        'produto': produto
+                    }
+                    return render(request, 'burguer/produto.html', context)
+
     6. No return da função detalhe_produto, insira no segundo parametro a variavel context.
     7. Vá em produto.html e altera o h1 do bloco content para receber o nome dinâmico do banco de dados = {{ produto.descricao }}
 

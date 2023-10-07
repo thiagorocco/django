@@ -8,5 +8,11 @@ def home(request):
         'produtos': produtos
     }
     return render(request, 'cakes/home.html', context)
-def detalhe_produto(request):
-    return render(request, 'cakes/produto.html')
+
+
+def detalhe_produto(request, produto_id):
+    produto = Produto.objects.get(pk=produto_id)
+    context = {
+        'produto': produto
+    }
+    return render(request, 'cakes/produto.html', context)
