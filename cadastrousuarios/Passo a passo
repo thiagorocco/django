@@ -7,4 +7,16 @@
     *** O django trabalha basicamente da seguinte forma:
     rota(urls.py) -> views.py(O que fazer quando chegar no link) -> html(O que exibir quando chegar na página)
 
-6. 
+6. Em projeto_cad_usuarios/urls.py insira em urlpatterns o seguinte path:
+
+    from django.contrib import admin
+    from django.urls import path
+    from app_cad_usuarios import views # **** 2° importe a view do app
+
+    urlpatterns = [
+        path('', views.home, name='home'), # *** 1° Insira essa linha
+        path('admin/', admin.site.urls),
+     
+    ]
+
+7. 
