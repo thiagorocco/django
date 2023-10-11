@@ -1,0 +1,10 @@
+1. Crie o ambiente virtual: python3 -m venv env;
+2. Ative o ambiente virtual: . env/bin/activate
+3. Instale o django: pip install django;
+4. Crie um projeto django: django-admin startprojeto projeto_cad_usuarios .;
+5. Crie a pasta do app: django-admin startapp app_cad_usuarios;
+
+    *** O django trabalha basicamente da seguinte forma:
+    rota(urls.py) -> views.py(O que fazer quando chegar no link) -> html(O que exibir quando chegar na página)
+
+6. 
