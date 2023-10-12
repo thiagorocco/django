@@ -8,13 +8,16 @@ def home(request):
 def usuarios(request):
     #Salvar os dados da tabela para o banco de dados
     novo_usuario = Usuario()
-    novo_usuario.nome = request.POST.get('nome')
-    novo_usuario.idade = request.POST.get('idade')
-    novo_usuario.save()
 
-    #Exibir todos os usuarios já cadastrados em uma nova página
+    #Se passou pelo formulário Post cadastre no BD
+    if 'nome' in request.POST and 'idade' in request.POST:
+        novo_usuario.nome = request.POST.get('nome')
+        novo_usuario.idade = request.POST.get('idade')
+        novo_usuario.save()
+
+    #Lista os usuários cadastrados
     usuarios = {
         'usuarios' : Usuario.objects.all()
     }
-    #Retornar os dados para a página de listagem de usuários
-    return render(request, 'usuarios/usuarios.html',usuarios)
+
+    return render(request,'usuarios/usuarios.html',usuarios)
