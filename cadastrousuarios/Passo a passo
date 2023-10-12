@@ -85,6 +85,9 @@ https://getbootstrap.com/docs/5.0/getting-started/introduction/:
     
     A página não funcionará porque o arquivo listagem_usuarios ainda não foi criado.
 
-13. 
+13. Vá até projeto_cad_usuarios/urls.py inclua o seguinte path:
+    path('usuarios/',views.usuario, name='listagem_usuarios')
+
+14. 
 
     
