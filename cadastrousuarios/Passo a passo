@@ -149,6 +149,42 @@ https://getbootstrap.com/docs/5.0/getting-started/introduction/:
 
 19. Em home.html insira logo após a tag form o seguinte token:
     {% csrf_token %}
-20. Estilize a listagem ...      
+20. Estilize a listagem Copie todo o código de home.html do início até a primeira tag do body e cole antes do conteúdo de usuarios.html.
+21 . Agora copie todo o código de home.html após a tag </form> até a última linha e cole logo após o conteúdo de usuarios.html.
+22. Insira uma class do bootstrap em table: table table-bordered table-striped
+23. Crie um template base.html para reutilizar código nas outras páginas. Em templates/usuarios crie o arquivo base.html. Copie e cole o código html de home.html nela e apague tudo que estiver após a tag </nav> e antes da tag <script> do bootstrap. Nesse espaço insira {% block conteudo %}{% endblock %}. O código ficará assim:
 
+    <!doctype html>
+    <html lang="pt-br">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+        <title>Cadastre-me!</title>
+    </head>
+
+    <body>
+        <!-- As a heading -->
+        <nav style="background-color: aquamarine !important;" class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">Cadastre-me</span>
+            </div>
+        </nav>
+
+        {% block conteudo %}
+        {% endblock %}
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    </body>
+
+    </html>        
+24. Agora vamos reaproveitar esse código para as páginas home.html e usuarios.html 
     
