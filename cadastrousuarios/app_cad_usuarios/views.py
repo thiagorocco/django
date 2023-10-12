@@ -1,8 +1,20 @@
 from django.shortcuts import render
+from .models import Usuario
 
 # Create your views here.
 def home(request):
     return render(request,'usuarios/home.html')
 
 def usuarios(request):
-    pass # puxar informação do banco de dados
+    #Salvar os dados da tabela para o banco de dados
+    novo_usuario = Usuario()
+    novo_usuario.nome = request.POST.get('nome')
+    novo_usuario.idade = request.POST.get('idade')
+    novo_usuario.save()
+
+    #Exibir todos os usuarios já cadastrados em uma nova página
+    usuarios = {
+        'usuarios' : Usuario.objects.all()
+    }
+    #Retornar os dados para a página de listagem de usuários
+    return render(request, 'usuarios/usuarios.html',usuarios)
