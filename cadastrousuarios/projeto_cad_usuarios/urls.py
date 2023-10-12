@@ -21,6 +21,6 @@ from app_cad_usuarios import views
 urlpatterns = [
     #path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    path('usuarios/',views.usuario, name='listagem_usuarios')
+    path('usuarios/',views.usuarios, name='listagem_usuarios')
  
 ]

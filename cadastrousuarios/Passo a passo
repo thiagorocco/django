@@ -85,9 +85,24 @@ https://getbootstrap.com/docs/5.0/getting-started/introduction/:
     
     A página não funcionará porque o arquivo listagem_usuarios ainda não foi criado.
 
-13. Vá até projeto_cad_usuarios/urls.py inclua o seguinte path:
-    path('usuarios/',views.usuario, name='listagem_usuarios')
+13. Vá até app_cad_usuarios/views.py e insira o código:
+        
+    def usuarios(request):
+        pass # puxar informação do banco de dados, por ora ficará assim.
 
-14. 
+13. Vá até projeto_cad_usuarios/urls.py inclua o seguinte path:
+
+    path('usuarios/',views.usuarios, name='listagem_usuarios')
+
+14. Vá para app_cad_usuarios/models.py e insira esse código:
+    
+    class Usuarios(models.Model):
+        id_usuario = models.AutoField(primary_key=True)
+        nome = models.TextField(max_length=255)
+        idade = models.IntegerField()
+
+15. Transforme o código python em sql com o comando no terminal: python manage.py makemigrations  
+
+16. E crie o banco de dados de fato com o comando no terminal: python manage.py migrate  
 
     
