@@ -60,5 +60,17 @@ https://getbootstrap.com/docs/5.0/getting-started/introduction/:
 
 10. Rode o servidor. Python manage.py runserver e veja o resultado.
 
+11. Volte ao site do bootstrap e copie o componente navbar As a heading.
+    
+    E cole logo abaixo da tag body no arquivo home.html. Esse código terá uma cor inserida e o conteúdo do span alterado:
+
+    <nav style="background-color: aquamarine !important;" class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">Cadastre-me</span>
+        </div>
+    </nav>
+
+    Após isso você já pode excluir o h1 inserido anteriormente.
+
 
     
