@@ -105,6 +105,50 @@ https://getbootstrap.com/docs/5.0/getting-started/introduction/:
 
 16. Volte ao arquivo app_cad_usuarios/views.py e altere a função usuarios:
 
-      
+    from django.shortcuts import render
+    from .models import Usuario
+
+    # Create your views here.
+    def home(request):
+        return render(request,'usuarios/home.html')
+
+    def usuarios(request):
+        #Salvar os dados da tabela para o banco de dados
+        novo_usuario = Usuario()
+        novo_usuario.nome = request.POST.get('nome')
+        novo_usuario.idade = request.POST.get('idade')
+        novo_usuario.save()
+
+        #Exibir todos os usuarios já cadastrados em uma nova página
+        usuarios = {
+            'usuarios' : Usuario.objects.all()
+        }
+        #Retornar os dados para a página de listagem de usuários
+        return render(request, 'usuarios/usuarios.html',usuarios)
+
+17. Crie o arquivo usuarios.html dentro de templates/usuarios.
+
+18. Insira o seguinte código:
+    
+    <div class="container">
+        <table>
+            <tr>
+                <th>id</th>
+                <th>Nome</th>
+                <th>Idade</th>
+            </tr>
+            {% for usuario in usuarios %}
+            <tr>
+                <td>{{usuario.id_usuario}}</td>
+                <td>{{usuario.nome}}</td>
+                <td>{{usuario.idade}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+19. Em home.html insira logo após a tag form o seguinte token:
+    {% csrf_token %}
+20. Estilize a listagem ...      
 
     
