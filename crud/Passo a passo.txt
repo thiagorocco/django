@@ -8,4 +8,14 @@
 
 5. Crie um projeto no django: django-admin startproject projeto .
 
-6. 
+6. Crie o banco de dados: python manage.py migrate
+
+7. Crie um super usuário para acessar o admin do django: python manage.py createsuperuser. Depois informe username, email é opcional, senha.
+
+8. Crie um app no django: django-admin startapp app.
+
+9. Em projeto/urls.py, após o primeiro path inclua o seguinte path:
+    path('app/',include('app.urls')), # *** Importe o include também 
+
+10. Agora em app crie o arquivo urls.py.
+
