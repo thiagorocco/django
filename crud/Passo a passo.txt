@@ -37,6 +37,24 @@
     from django.shortcuts import render
 
     def home(request):
-        return(request, "index.html")
+        return render(request, 'app/index.html')
     
-14. Agore crie o template index.html em app/templates/app/index.html
+14. Agore crie o template index.html em app/templates/app/index.html. Insira um código inicial simples como:
+
+    <html>
+    <head>
+        <title>Index</title>
+    </head>
+    <body>
+        <h1>Hello, World!</h1>
+    </body>
+    </html>
+
+15. Agora vá em app/models.py e insira o seguinte código para criar um Model:
+    from django.db import models
+
+    # Create your models here.
+    class Pessoa(models.Model):
+        nome = models.CharField(max_length=100)     
+
+16. 
