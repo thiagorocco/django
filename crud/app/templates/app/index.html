@@ -13,7 +13,8 @@
         {% endfor %}
     </ul>
 
-    <form action="{% url 'salvar' %}">
+    <form action="{% url 'salvar' %}" method="post">
+        {% csrf_token %}
         <input type="text" name="nome">
         <button type="submit">Salvar</button>
     </form>

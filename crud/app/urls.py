@@ -4,5 +4,5 @@ from .views import home, salvar
 
 urlpatterns = [
     path('', home),
-    path('salvar/',salvar, name="salvar"),
+    path('salvar/', salvar, name="salvar"),
 ]
