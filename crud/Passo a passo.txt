@@ -57,4 +57,7 @@
     class Pessoa(models.Model):
         nome = models.CharField(max_length=100)     
 
-16. 
+16. Registre essa model em admin.py inserindo o seguinte código:
+    from .models import Pessoa
+
+    admin.site.register(Pessoa)
