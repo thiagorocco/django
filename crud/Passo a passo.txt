@@ -14,8 +14,29 @@
 
 8. Crie um app no django: django-admin startapp app.
 
-9. Em projeto/urls.py, após o primeiro path inclua o seguinte path:
+9. Registre esse novo app em projeto/settings. Em INSTALLED_APPS, após a última elemento do array insira:
+    'app',
+
+10. Em projeto/urls.py, após o primeiro path inclua o seguinte path:
     path('app/',include('app.urls')), # *** Importe o include também 
 
-10. Agora em app crie o arquivo urls.py.
+11. Agora em app crie o arquivo urls.py.
 
+12. Dentro do arquivo app/urls.py indique a view home. Insira o seguinte código:
+    
+    from django.contrib import admin
+    from django.urls import path, include
+    from .views import home
+
+    urlpatterns = [
+        path('', home),
+    ]
+
+13. Em app/views.py crie a view home. Insira o seguinte código:
+    
+    from django.shortcuts import render
+
+    def home(request):
+        return(request, "index.html")
+    
+14. Agore crie o template index.html em app/templates/app/index.html
