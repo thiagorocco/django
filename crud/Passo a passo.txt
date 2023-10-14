@@ -61,3 +61,7 @@
     from .models import Pessoa
 
     admin.site.register(Pessoa)
+
+17. Execute os comandos: python manage.py makemigrations e depois na sequência python manage.py migrate.
+
+
