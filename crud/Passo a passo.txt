@@ -1,0 +1,11 @@
+1. Crie uma pasta para o projeto.
+
+2. No terminal crie um ambiente virtual: python3 -m venv env
+
+3. Ative o ambiente virtual: . env/bin/activate
+
+4. Instale o django: pip install django.
+
+5. Crie um projeto no django: django-admin startproject projeto .
+
+6. 
