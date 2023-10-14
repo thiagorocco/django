@@ -75,6 +75,43 @@
         #Isso dará acesso aos dados do banco de dados no template index.html
         return render(request,'app/index.html',{"pessoas": pessoas})
 
+19. Agora em index.html logo abaixo da lista dinâmica insira um form para cadastrar novos usuários. O código do arquivo ficará dessa forma:
+
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hello World</title>
+    </head>
+    <body>
+        <h1>Hello, World!</h1>
+        <ul>
+            {% for pessoa in pessoas %}
+            <li>{{ pessoa.id}} - {{pessoa.nome}}</li>
+            {% endfor %}
+        </ul>
+
+        <form action="{% url 'salvar' %}">
+            <input type="text" name="nome">
+            <button type="submit">Salvar</button>
+        </form>
+        
+
+    </body>
+    </html>
+
+20. Vá até app/urls.py e inclua uma rota para a view salvar que iremos criar depois. O código ficará assim:
+
+    from django.contrib import admin
+    from django.urls import path, include
+    from .views import home, salvar
+
+    urlpatterns = [
+        path('', home),
+        path('salvar/',salvar, name="salvar"),
+    ]
+
 
 
 

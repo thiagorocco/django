@@ -12,5 +12,10 @@
         <li>{{ pessoa.id}} - {{pessoa.nome}}</li>
         {% endfor %}
     </ul>
+
+    <form action="{% url 'salvar' %}">
+        <input type="text" name="nome">
+        <button type="submit">Salvar</button>
+    </form>
 </body>
 </html>
