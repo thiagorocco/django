@@ -16,3 +16,7 @@ def salvar(request):
     #Atualizando a lista de usuários cadastrados
     pessoas = Pessoa.objects.all()
     return render(request, "app/index.html", {"pessoas":pessoas})
+
+def editar(request, id):
+    pessoa = Pessoa.objects.get(id=id)
+    return render(request, 'app/update.html',{"pessoa" : pessoa})

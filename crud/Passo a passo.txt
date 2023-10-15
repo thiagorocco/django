@@ -147,7 +147,7 @@
         <h1>Hello, World!</h1>
         <ul>
             {% for pessoa in pessoas %}
-            <li>{{ pessoa.id}} - {{pessoa.nome}} <a href="{% url 'editar' pessoa.id%}">Editar</a></li> <!-- trecho alterado -->
+            <li>{{ pessoa.id}} - {{pessoa.nome}} <a href="{% url 'editar' pessoa.id%}">Editar</a></li> <!-- Esse foi o trecho alterado -->
             {% endfor %}
         </ul>
 
@@ -159,7 +159,68 @@
     </body>
     </html>
 
-23. 
+23. Crie a url editar em app/urls.py. O código do arquivo ficará assim:
+
+    from django.contrib import admin
+    from django.urls import path, include
+    from .views import home, salvar, editar # Esse trecho foi alterado
+
+    urlpatterns = [
+        path('', home),
+        path('salvar/', salvar, name='salvar'),
+        #Aqui a url tem o id do usuário passado na url
+        path('editar/<int:id>', editar, name='editar'), # Esse trecho foi alterado
+    ]
+
+24. Vá em views.py e crie a view editar. O código do arquivo ficará dessa forma:
+    
+    from django.shortcuts import render
+    from app.models import Pessoa
+
+    def home(request):
+        pessoas = Pessoa.objects.all()
+
+        #Isso dará acesso aos dados do banco de dados no template index.html
+        return render(request,'app/index.html',{"pessoas": pessoas})
+
+    def salvar(request):
+        #Cadastrando novo registro
+        vnome = request.POST.get("nome")
+        #Atributo nome do banco de dados vai receber o valor da variável nome(vnome)
+        Pessoa.objects.create(nome=vnome)
+
+        #Atualizando a lista de usuários cadastrados
+        pessoas = Pessoa.objects.all()
+        return render(request, "app/index.html", {"pessoas":pessoas})
+    
+    # Esse foi o trecho alterado
+    def editar(request, id):
+        pessoa = Pessoa.objects.get(id=id)
+        return render(request, 'update.html',{"pessoa" : pessoa})    
+
+25. Agora crie o template update.html dentro de app/templates/app com o seguinte código:
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Editar</title>
+    </head>
+    <body>
+        <h1>Edição de registro</h1>
+
+        {{ pessoa.id}} - {{pessoa.nome}}
+        
+        <form action="{% url 'update' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="nome" value="{{ pessoa.nome }}">
+            <button type="submit">Editar</button>
+        </form>
+    </body>
+    </html>
+
+26. Crie uma rota para a view update em app/urls.py. O código ficará assim:
+    
 
 
 

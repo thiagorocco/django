@@ -9,7 +9,7 @@
     <h1>Hello, World!</h1>
     <ul>
         {% for pessoa in pessoas %}
-        <li>{{ pessoa.id}} - {{pessoa.nome}} <a href="{% url 'editar' pessoa.id%}"></a></li>
+        <li>{{ pessoa.id}} - {{pessoa.nome}} <a href="{% url 'editar' pessoa.id%}">Editar</a></li>
         {% endfor %}
     </ul>
 
