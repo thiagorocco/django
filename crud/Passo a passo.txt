@@ -263,5 +263,80 @@
         pessoa.save()
         return redirect(home)
 
+28. Vamos para a última funcionalidade do CRUD, o delete. Em index.html, assim como fez o link para o editar, faça para o excluir. Código ficará assim:
 
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hello World</title>
+    </head>
+    <body>
+        <h1>Hello, World!</h1>
+        <ul>
+            {% for pessoa in pessoas %}
+            <li>{{ pessoa.id}} - {{pessoa.nome}} 
+                <a href="{% url 'editar' pessoa.id%}">Editar</a>
+                <a href="{% url 'delete' pessoa.id%}">Excluir</a>
+            </li>
+            {% endfor %}
+        </ul>
 
+        <form action="{% url 'salvar' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="nome">
+            <button type="submit">Salvar</button>
+        </form>
+    </body>
+    </html>
+
+29. Em app/urls.py define a rota para a view delete. Código ficará assim:
+
+    from django.urls import path
+    from .views import home, salvar, editar, update, delete
+
+    urlpatterns = [
+        path('', home),
+        path('salvar/', salvar, name='salvar'),
+        path('editar/<int:id>', editar, name='editar'),
+        path('update/<int:id>', update, name='update'),
+        path('delete/<int:id>', delete, name='delete'), # trecho alterado/incluído
+    ]
+
+30. Em views.py crie a view delete. Código ficará assim:
+    from django.shortcuts import render, redirect
+    from app.models import Pessoa
+
+    def home(request):
+        pessoas = Pessoa.objects.all()
+
+        #Isso dará acesso aos dados do banco de dados no template index.html
+        return render(request,'app/index.html',{"pessoas": pessoas})
+
+    def salvar(request):
+        #Cadastrando novo registro
+        vnome = request.POST.get("nome")
+        #Atributo nome do banco de dados vai receber o valor da variável nome(vnome)
+        Pessoa.objects.create(nome=vnome)
+
+        #Atualizando a lista de usuários cadastrados
+        pessoas = Pessoa.objects.all()
+        return render(request, "app/index.html", {"pessoas":pessoas})
+
+    def editar(request, id):
+        pessoa = Pessoa.objects.get(id=id)
+        return render(request, 'app/update.html',{"pessoa" : pessoa})
+
+    def update(request, id):
+        vnome = request.POST.get("nome")
+        pessoa = Pessoa.objects.get(id=id)
+        pessoa.nome = vnome
+        pessoa.save()
+        return redirect(home)
+        
+    # *** Trecho alterado/incluido ***
+    def delete(request, id):
+        pessoa = Pessoa.objects.get(id=id)
+        pessoa.delete()
+        return redirect(home)
