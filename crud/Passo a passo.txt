@@ -220,8 +220,18 @@
     </html>
 
 26. Crie uma rota para a view update em app/urls.py. O código ficará assim:
-    
+    from django.contrib import admin
+    from django.urls import path
+    from .views import home, salvar, editar, update
 
+    urlpatterns = [
+        path('', home),
+        path('salvar/', salvar, name='salvar'),
+        path('editar/<int:id>', editar, name='editar'),
+        path('update/<int:id>', update, name='update'), # trecho que foi alterado/incluso.
+    ]
+
+27. 
 
 
 
