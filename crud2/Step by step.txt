@@ -1,0 +1,6 @@
+1. Terminal: python3 -m venv venv;
+2. Terminal: pip install django;
+3. Terminal: django-admin startproject mypro .;
+4. Terminal: python manage.py startapp newapp;
+5. Vá até settings.py e em INSTALLED_APPS insira na última posição o valor 'newapp',;
+6. 
