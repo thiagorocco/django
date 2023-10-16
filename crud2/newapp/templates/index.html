@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-{% load static %}
-<link rel="stylesheet" href="{% static 'style.css' %}">
+
 
 <body>
     <div class="container">
@@ -21,24 +19,21 @@
                 <th>Country</th>
                 <th colspan="2" id="mid">Action</th>
             </thead>
-            {% for x in mem %}
             <tr>
-                <td>{{x.id}}</td>
-                <td>{{x.firstname}}</td>
-                <td>{{x.lastname}}</td>
-                <td>{{x.country}}</td>
+                <td>1</td>
+                <td>Robert</td>
+                <td>Steward</td>
+                <td>Usa</td>
                 <td>
-                    <a href="update/{{x.id}}"><button id="up">update</button></a>
+                    <a href=""><button id="up">Update</button></a>
                 </td>
                 <td>
-                    <a href="delete/{{x.id}}"><button id="del">delete</button></a>
+                    <a href=""><button id="del">Delete</button></a>
                 </td>
             </tr>
-            {% endfor %}
         </table>
         <br><br>
-        <a href="{% url 'add' %}"><button id="new3">Add Member</button></a>
+        <a href=""><button id="new3">Add Member</button></a>
     </div>
 </body>
-
 </html>
