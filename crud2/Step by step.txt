@@ -17,4 +17,17 @@
     def index(request):
         return render(request, 'index.html')
 
-8.  
+8. Em mypro/urls.py inclua o caminho para acessar newapp.urls: 
+
+    from django.contrib import admin
+    from django.urls import path, include
+
+    urlpatterns = [
+        path('admin/', admin.site.urls),
+        path('', include('newapp.urls')),
+
+
+9. Na pasta newapp crie a pasta templates e dentro dela crie o arquivo index.html:
+    
+
+ 
