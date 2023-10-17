@@ -19,11 +19,12 @@
                 <th>Country</th>
                 <th colspan="2" id="mid">Action</th>
             </thead>
+            {% for x in mem %}
             <tr>
-                <td>1</td>
-                <td>Robert</td>
-                <td>Steward</td>
-                <td>Usa</td>
+                <td>{{ x.id }}</td>
+                <td>{{ x.firstname }}</td>
+                <td>{{ x.lastname }}</td>
+                <td>{{ x.country }}</td>
                 <td>
                     <a href=""><button id="up">Update</button></a>
                 </td>
@@ -31,6 +32,7 @@
                     <a href=""><button id="del">Delete</button></a>
                 </td>
             </tr>
+            {% endfor %}
         </table>
         <br><br>
         <a href=""><button id="new3">Add Member</button></a>
