@@ -152,4 +152,4 @@
     </body>
     </html>
 
-17. 
+17. Dentro de newapp crie a pasta static e dentro dela crie o arquivo style.css ...
