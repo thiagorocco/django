@@ -326,5 +326,12 @@
         path('addrec/',views.addrec, name='addrec' ) # trecho incluído
     ]
 
-22. Descomente a linha do link em index.html que antes tinha um comentário
+22. Descomente a linha do link em index.html que antes tinha um comentário.
+ *** Aqui já temos a função CREATE funcionando ***
+
+23. Vá até views.py e crie a view delete:
+    def delete(request, id):
+    mem = Member.objects.get(id=id)
+    mem.delete()
+    return redirect('/')
 
