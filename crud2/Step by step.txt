@@ -335,3 +335,15 @@
     mem.delete()
     return redirect('/')
 
+24. Em urls.py acrescente uma rota para delete:
+    
+    from django.urls import path
+    from . import views
+
+    urlpatterns = [
+        path('', views.index, name='index'),
+        path('add/',views.add, name='add' ),
+        path('addrec/',views.addrec, name='addrec'),
+        path('delete/',views.delete, name='delete'), # trecho incluído
+    ]
+
