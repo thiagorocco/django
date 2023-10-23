@@ -347,3 +347,12 @@
         path('delete/',views.delete, name='delete'), # trecho incluído
     ]
 
+25. Vá em index.html e no <a> que contém o botão Delete inclua a seguinte url em href:
+    "delete/{{x.id}}"
+
+    Agora teste a exclusão.
+
+
+
+
+
