@@ -20,3 +20,7 @@ def delete(request, id):
     mem = Member.objects.get(id=id)
     mem.delete()
     return redirect('/')
+
+def update(request, id):
+    mem = Member.objects.get(id=id)
+    return render(request,'update.html',{'mem':mem})

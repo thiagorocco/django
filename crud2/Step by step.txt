@@ -385,6 +385,9 @@
 
     </html>
 
+27. Em views.py crie a view update:
+
+    
 
 
 
