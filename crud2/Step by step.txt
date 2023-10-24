@@ -385,7 +385,7 @@
 
     </html>
 
-27. Em views.py crie a view update:
+27. Em views.py crie as view update e uprec:
     .
     .
     .
@@ -394,7 +394,22 @@
         mem = Member.objects.get(id=id)
         return render(request,'update.html',{'mem':mem})
 
+    def uprec(request, id):
+    x = request.POST['first']
+    y = request.POST['last']
+    z = request.POST['country']
+    mem = Member.objects.get(id=id)
+    mem.firstname = x
+    mem.lastname = y
+    mem.country = z
+    mem.save()
+    return redirect('/') 
+
 28. Vá em urls.py e crie as rotas update e update/uprec:
-    
+    .
+    .
+    .
+    path('update/<int:id>/',views.update, name='update'),
+    path('update/uprec/<int:id>/',views.uprec, name='uprec'),
 
 
