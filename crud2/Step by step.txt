@@ -412,4 +412,4 @@
     path('update/<int:id>/',views.update, name='update'),
     path('update/uprec/<int:id>/',views.uprec, name='uprec'),
 
-
+29. Por fim em index.html configure a url de update no <a> correspondente através do valor "update/{{x.id}}"
