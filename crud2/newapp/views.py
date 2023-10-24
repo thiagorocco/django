@@ -24,3 +24,14 @@ def delete(request, id):
 def update(request, id):
     mem = Member.objects.get(id=id)
     return render(request,'update.html',{'mem':mem})
+
+def uprec(request, id):
+    x = request.POST['first']
+    y = request.POST['last']
+    z = request.POST['country']
+    mem = Member.objects.get(id=id)
+    mem.firstname = x
+    mem.lastname = y
+    mem.country = z
+    mem.save()
+    return redirect('/') 

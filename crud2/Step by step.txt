@@ -386,9 +386,15 @@
     </html>
 
 27. Em views.py crie a view update:
+    .
+    .
+    .
+    .
+    def update(request, id):
+        mem = Member.objects.get(id=id)
+        return render(request,'update.html',{'mem':mem})
 
+28. Vá em urls.py e crie as rotas update e update/uprec:
     
-
-
 
 
