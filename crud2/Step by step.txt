@@ -355,7 +355,7 @@
 26. Agora vamos para a última operação, update. Crie um arquivo html chamado update em templates com o seguinte código:
     
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="pt-br">
 
     <head>
         <meta charset="UTF-8">
@@ -395,15 +395,15 @@
         return render(request,'update.html',{'mem':mem})
 
     def uprec(request, id):
-    x = request.POST['first']
-    y = request.POST['last']
-    z = request.POST['country']
-    mem = Member.objects.get(id=id)
-    mem.firstname = x
-    mem.lastname = y
-    mem.country = z
-    mem.save()
-    return redirect('/') 
+        x = request.POST['first']
+        y = request.POST['last']
+        z = request.POST['country']
+        mem = Member.objects.get(id=id)
+        mem.firstname = x
+        mem.lastname = y
+        mem.country = z
+        mem.save()
+        return redirect('/') 
 
 28. Vá em urls.py e crie as rotas update e update/uprec:
     .
