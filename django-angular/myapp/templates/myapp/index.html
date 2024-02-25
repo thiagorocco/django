@@ -1,0 +1,26 @@
+<!-- index.html (myproject/myapp/templates/myapp/index.html) -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular Demo</title>
+    <!-- Angular CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+    <!-- Conteúdo Angular vai aqui -->
+    <div>
+        <h1>{{ message }}</h1>
+    </div>
+
+    <!-- Seção para scripts Angular -->
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function($scope) {
+            $scope.message = 'Hello from Angular!';
+        });
+    </script>
+</body>
+</html>
